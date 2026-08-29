@@ -1,7 +1,8 @@
-import type {
-  DocumentData,
-  Firestore,
-  QueryDocumentSnapshot,
+import {
+  FieldPath,
+  type DocumentData,
+  type Firestore,
+  type QueryDocumentSnapshot,
 } from "firebase-admin/firestore";
 
 import { getAdminDb } from "@/lib/firebase-admin";
@@ -19,7 +20,9 @@ import type {
 const ROOT_COLLECTION = "conversations";
 
 function assertDocumentObject<T>(
-  snapshot: QueryDocumentSnapshot<DocumentData> | { exists: boolean; data(): DocumentData | undefined },
+  snapshot:
+    | QueryDocumentSnapshot<DocumentData>
+    | { exists: boolean; data(): DocumentData | undefined },
   label: string,
 ): T | null {
   if (!snapshot.exists) return null;
@@ -34,8 +37,24 @@ function boundedLimit(limit?: number) {
   return Math.max(1, Math.min(limit ?? 50, 100));
 }
 
+function messageKey(conversationId: string, messageId: string) {
+  return `${conversationId}:${messageId}`;
+}
+
+function compareLastMessage(
+  left: Conversation["lastMessage"],
+  right: Conversation["lastMessage"],
+) {
+  if (!left && !right) return 0;
+  if (!left) return -1;
+  if (!right) return 1;
+  const byTime = left.createdAt.localeCompare(right.createdAt);
+  return byTime || left.id.localeCompare(right.id);
+}
+
 export class FirestoreConversationStore implements ConversationStore {
   private readonly db: Firestore;
+  private readonly pendingNewMessages = new Map<string, ConversationMessage>();
 
   constructor(db: Firestore = getAdminDb()) {
     this.db = db;
@@ -63,7 +82,45 @@ export class FirestoreConversationStore implements ConversationStore {
   }
 
   async putConversation(conversation: Conversation): Promise<void> {
-    await this.conversationRef(conversation.id).set(conversation, { merge: false });
+    const pendingId = conversation.lastMessage?.id;
+    const pending = pendingId
+      ? this.pendingNewMessages.get(messageKey(conversation.id, pendingId))
+      : undefined;
+
+    if (pending) {
+      await this.commitMessage(pending, conversation);
+      this.pendingNewMessages.delete(messageKey(conversation.id, pending.id));
+      return;
+    }
+
+    const conversationRef = this.conversationRef(conversation.id);
+    await this.db.runTransaction(async (transaction) => {
+      const snapshot = await transaction.get(conversationRef);
+      if (!snapshot.exists) {
+        transaction.create(conversationRef, conversation);
+        return;
+      }
+
+      const stored = assertDocumentObject<Conversation>(snapshot, "conversation");
+      if (!stored) throw new Error("Conversation snapshot disappeared.");
+
+      const incomingIsOlder =
+        compareLastMessage(conversation.lastMessage, stored.lastMessage) < 0;
+      transaction.set(
+        conversationRef,
+        incomingIsOlder
+          ? {
+              ...conversation,
+              updatedAt:
+                stored.updatedAt.localeCompare(conversation.updatedAt) > 0
+                  ? stored.updatedAt
+                  : conversation.updatedAt,
+              lastMessage: stored.lastMessage,
+            }
+          : conversation,
+        { merge: false },
+      );
+    });
   }
 
   async commitMessage(
@@ -74,28 +131,52 @@ export class FirestoreConversationStore implements ConversationStore {
     const messageRef = this.messages(conversation.id).doc(message.id);
 
     await this.db.runTransaction(async (transaction) => {
-      const [conversationSnapshot, messageSnapshot] = await Promise.all([
-        transaction.get(conversationRef),
-        transaction.get(messageRef),
-      ]);
-
+      const conversationSnapshot = await transaction.get(conversationRef);
       if (!conversationSnapshot.exists) {
         throw new Error("Conversation disappeared before message commit.");
       }
 
+      const currentConversation = assertDocumentObject<Conversation>(
+        conversationSnapshot,
+        "conversation",
+      );
+      if (!currentConversation) {
+        throw new Error("Conversation snapshot disappeared.");
+      }
+
+      const messageSnapshot = await transaction.get(messageRef);
       if (messageSnapshot.exists) {
         const stored = assertDocumentObject<ConversationMessage>(
           messageSnapshot,
           "conversation message",
         );
-        if (JSON.stringify(stored) === JSON.stringify(message)) {
-          return;
+        if (JSON.stringify(stored) !== JSON.stringify(message)) {
+          throw new Error(
+            "Conversation message id already exists with different content.",
+          );
         }
-        throw new Error("Conversation message id already exists with different content.");
+      } else {
+        transaction.create(messageRef, message);
       }
 
-      transaction.create(messageRef, message);
-      transaction.set(conversationRef, conversation, { merge: false });
+      const incomingLast = conversation.lastMessage;
+      const shouldAdvance =
+        Boolean(incomingLast) &&
+        compareLastMessage(incomingLast, currentConversation.lastMessage) >= 0;
+
+      if (shouldAdvance && incomingLast) {
+        transaction.set(
+          conversationRef,
+          {
+            updatedAt:
+              currentConversation.updatedAt.localeCompare(conversation.updatedAt) > 0
+                ? currentConversation.updatedAt
+                : conversation.updatedAt,
+            lastMessage: incomingLast,
+          },
+          { merge: true },
+        );
+      }
     });
   }
 
@@ -104,13 +185,18 @@ export class FirestoreConversationStore implements ConversationStore {
     participantId: string,
   ): Promise<ConversationParticipant | null> {
     const snapshot = await this.participants(conversationId).doc(participantId).get();
-    return assertDocumentObject<ConversationParticipant>(snapshot, "conversation participant");
+    return assertDocumentObject<ConversationParticipant>(
+      snapshot,
+      "conversation participant",
+    );
   }
 
   async listParticipants(
     conversationId: string,
   ): Promise<readonly ConversationParticipant[]> {
-    const snapshot = await this.participants(conversationId).orderBy("joinedAt", "asc").get();
+    const snapshot = await this.participants(conversationId)
+      .orderBy("joinedAt", "asc")
+      .get();
     return Object.freeze(
       snapshot.docs.map((doc) => {
         const value = assertDocumentObject<ConversationParticipant>(
@@ -133,8 +219,16 @@ export class FirestoreConversationStore implements ConversationStore {
     conversationId: string,
     messageId: string,
   ): Promise<ConversationMessage | null> {
+    const pending = this.pendingNewMessages.get(
+      messageKey(conversationId, messageId),
+    );
+    if (pending) return pending;
+
     const snapshot = await this.messages(conversationId).doc(messageId).get();
-    return assertDocumentObject<ConversationMessage>(snapshot, "conversation message");
+    return assertDocumentObject<ConversationMessage>(
+      snapshot,
+      "conversation message",
+    );
   }
 
   async listMessages(
@@ -143,6 +237,7 @@ export class FirestoreConversationStore implements ConversationStore {
   ): Promise<readonly ConversationMessage[]> {
     let query = this.messages(conversationId)
       .orderBy("createdAt", "desc")
+      .orderBy(FieldPath.documentId(), "desc")
       .limit(boundedLimit(options.limit));
 
     if (options.before) {
@@ -166,9 +261,22 @@ export class FirestoreConversationStore implements ConversationStore {
   }
 
   async putMessage(message: ConversationMessage): Promise<void> {
-    await this.messages(message.conversationId)
-      .doc(message.id)
-      .set(message, { merge: false });
+    const ref = this.messages(message.conversationId).doc(message.id);
+    const snapshot = await ref.get();
+
+    if (snapshot.exists) {
+      await ref.set(message, { merge: false });
+      return;
+    }
+
+    const key = messageKey(message.conversationId, message.id);
+    const pending = this.pendingNewMessages.get(key);
+    if (pending && JSON.stringify(pending) !== JSON.stringify(message)) {
+      throw new Error(
+        "Conversation message id is already staged with different content.",
+      );
+    }
+    this.pendingNewMessages.set(key, message);
   }
 
   async getArtifact(
@@ -176,13 +284,18 @@ export class FirestoreConversationStore implements ConversationStore {
     artifactId: string,
   ): Promise<ConversationArtifact | null> {
     const snapshot = await this.artifacts(conversationId).doc(artifactId).get();
-    return assertDocumentObject<ConversationArtifact>(snapshot, "conversation artifact");
+    return assertDocumentObject<ConversationArtifact>(
+      snapshot,
+      "conversation artifact",
+    );
   }
 
   async listArtifacts(
     conversationId: string,
   ): Promise<readonly ConversationArtifact[]> {
-    const snapshot = await this.artifacts(conversationId).orderBy("createdAt", "asc").get();
+    const snapshot = await this.artifacts(conversationId)
+      .orderBy("createdAt", "asc")
+      .get();
     return Object.freeze(
       snapshot.docs.map((doc) => {
         const value = assertDocumentObject<ConversationArtifact>(
