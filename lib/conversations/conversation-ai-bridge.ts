@@ -148,7 +148,7 @@ function buildWorkerInput(
       now: now.toISOString(),
       timezone: "America/St_Thomas" as const,
     }),
-    capabilities: Object.freeze([...capabilities]),
+    capabilities: [...capabilities],
   });
 
   const rootIntent: CoordinationRootIntent = Object.freeze({
