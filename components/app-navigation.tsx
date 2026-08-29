@@ -178,6 +178,7 @@ export function AppNavigation() {
   const [tripStopCount, setTripStopCount] = useState(0);
   const [tripContext, setTripContext] = useState<TravelerNavTripContext | null>(null);
   const [activeIsland, setActiveIsland] = useState<ActiveIsland>("stt");
+  const contextualConciergeHref = `/concierge?island=${activeIsland}`;
 
   useEffect(() => {
     function refreshTripState() {
@@ -323,6 +324,9 @@ export function AppNavigation() {
             aria-label={accessibleLabel}
             aria-current={active ? "page" : undefined}
             data-nav={base === "/" ? "home" : base.slice(1)}
+            data-concierge-href={
+              base === "/places" ? contextualConciergeHref : undefined
+            }
             className={clsx(
               "app-nav__item relative",
               isMap && "app-nav__item--map",
