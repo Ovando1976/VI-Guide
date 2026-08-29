@@ -16,9 +16,6 @@ import type { ConversationMessage } from "@/types/conversation";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const store = new FirestoreConversationStore();
-const engine = new ConversationEngine(store);
-
 function validId(value: string) {
   return /^[a-zA-Z0-9_-]{1,160}$/.test(value);
 }
@@ -69,6 +66,7 @@ export async function GET(
     }
 
     const userId = await verifiedConversationUserId(request);
+    const store = new FirestoreConversationStore();
     await bindConversationParticipant(store, conversationId, userId);
 
     const url = new URL(request.url);
@@ -110,6 +108,8 @@ export async function POST(
     }
 
     const userId = await verifiedConversationUserId(request);
+    const store = new FirestoreConversationStore();
+    const engine = new ConversationEngine(store);
     const participant = await bindConversationParticipant(
       store,
       conversationId,
