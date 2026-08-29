@@ -85,6 +85,21 @@ other
 
 This allows the same conversation to attach a collaborative document, trip plan, event, poll, or future workspace object while the owning feature remains responsible for its detailed data model and access controls.
 
+## AI participant bridge
+
+`ConversationAiParticipantBridge` connects the authorized conversation domain to an `AgentWorker`. In production that worker can be `IslandIntelligenceRouterWorker`, so the existing router still decides between configured OpenAI and gpt-oss workers.
+
+The bridge deliberately does not bypass conversation policy:
+
+1. `ConversationEngine.buildAiContext()` validates AI access plus mention/active invocation rules.
+2. Only privacy-minimized conversation history is converted into bounded worker input.
+3. External account ids and the client intelligence session id are stripped before model routing.
+4. The direct reply bridge exposes no tool surface; `tool_request` and `delegate` outputs are rejected rather than executed.
+5. The AI participant persists its own response through `ConversationEngine.appendMessage()`.
+6. Router provider/model/complexity metadata is retained in `message.aiRun` for auditability but excluded from future model context.
+
+This preserves the same authorization path for human and AI-authored messages while keeping model routing below the conversation layer.
+
 ## Persistence boundary
 
 `ConversationStore` is intentionally storage-neutral. The first implementation, `InMemoryConversationStore`, exists for deterministic domain testing. A production Firestore adapter should preserve the same contract and add transactions/idempotency where required for concurrent message writes.
@@ -95,32 +110,12 @@ Run:
 
 ```bash
 npx tsx scripts/test-conversation-engine.ts
+npx tsx scripts/test-conversation-ai-bridge.ts
 npm run typecheck
 ```
 
-The test covers direct/group validation, sender impersonation denial, read-only participants, sender-only edits, moderator tombstone deletion, AI opt-in and mention enforcement, model-context minimization, deleted-message exclusion, and shared artifact references.
+The tests cover direct/group validation, sender impersonation denial, read-only participants, sender-only edits, moderator tombstone deletion, AI opt-in and mention enforcement, model-context minimization, deleted-message exclusion, shared artifact references, AI self-authorship, identity minimization, bounded capabilities, and rejection of direct tool execution.
 
 ## Next milestone
 
-The next layer is the **AI participant bridge**:
-
-```text
-conversation message
-       |
-       v
-conversation authorization + AI context
-       |
-       v
-Island Intelligence Router
-       |
-       v
-selected bounded model worker
-       |
-       v
-provider-neutral assistant message
-       |
-       v
-ConversationStore
-```
-
-That bridge must reuse the existing model router and bounded runtime rather than allowing chat code to call a model provider directly.
+The next layer is the **Firestore conversation adapter plus authenticated API/realtime surface**. It should implement the existing `ConversationStore` contract, preserve fail-closed authorization, and avoid exposing unrestricted collection access to clients.
