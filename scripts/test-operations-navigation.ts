@@ -123,10 +123,12 @@ expectSource(operationsStyles, 'content: "OPERATIONS"', "desktop operations mode
 expectSource(operationsStyles, ".app-nav__item--operations.is-active", "operations mode has a dedicated active state");
 expectSource(operationsStyles, "@media (max-width: 700px)", "operations treatment includes a mobile-specific state");
 
-expectSource(navigation, 'aria-label="Primary navigation"', "traveler routes retain the original primary navigation");
-expectSource(navigation, 'label: "Explore"', "traveler Explore navigation remains intact");
+expectSource(navigation, 'aria-label="Primary navigation"', "traveler routes retain the primary navigation boundary");
+expectSource(navigation, 'label: "Chats"', "social chat is a primary traveler destination");
+expectSource(navigation, 'label: "Discover"', "traveler discovery remains primary");
 expectSource(navigation, 'label: "My Trip"', "traveler My Trip navigation remains intact");
-expectSource(navigation, 'label: "Concierge"', "traveler Concierge navigation remains intact");
+expectSource(navigation, '"/concierge",', "Concierge remains discoverable within the Discover route family");
+expectSource(navigation, 'data-concierge-href=', "Discover preserves contextual Concierge handoff metadata");
 
 expectSource(accountMenu, '"Driver workspace"', "Account menu keeps Driver workspace recovery");
 expectSource(accountMenu, '"Business console"', "Account menu keeps Business console recovery");
