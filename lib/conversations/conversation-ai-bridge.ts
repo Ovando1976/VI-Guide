@@ -5,9 +5,10 @@ import type {
   AgentBlackboardMessage,
   AgentBlackboardTask,
 } from "@/lib/intelligence/agent-blackboard";
-import type { AgentWorker } from "@/lib/intelligence/agent-worker";
+import type { AgentWorker, AgentWorkerInput } from "@/lib/intelligence/agent-worker";
 import type { CoordinationRootIntent } from "@/lib/intelligence/agent-policy";
 import type { CollectiveAgentDescriptor } from "@/lib/intelligence/agent-registry";
+import type { IntelligenceRouteDecision } from "@/lib/intelligence/model-router";
 import type {
   IntelligenceCapability,
   IntelligenceContext,
@@ -47,6 +48,11 @@ const CHAT_AGENT: CollectiveAgentDescriptor = Object.freeze({
   version: "1.0.0",
 });
 
+type RoutableAgentWorker = AgentWorker &
+  Readonly<{
+    decide?: (input: AgentWorkerInput) => IntelligenceRouteDecision;
+  }>;
+
 export type ConversationAiBridgeInput = Readonly<{
   conversationId: string;
   requesterParticipantId: string;
@@ -61,6 +67,7 @@ export type ConversationAiBridgeInput = Readonly<{
 export type ConversationAiBridgeResult = Readonly<{
   messageId: string;
   workerId: string;
+  provider: string | null;
   model: string | null;
   confidence: "low" | "medium" | "high";
 }>;
@@ -124,7 +131,7 @@ function buildWorkerInput(
   context: ConversationAiContext,
   travelerContext: IntelligenceContext,
   capabilities: readonly IntelligenceCapability[],
-) {
+): AgentWorkerInput {
   const now = new Date();
   const latest = context.messages.at(-1);
   const latestText = latest ? messageText(latest.parts) : "";
@@ -200,6 +207,8 @@ export class ConversationAiParticipantBridge {
       input.context,
       capabilities,
     );
+    const routableWorker = this.worker as RoutableAgentWorker;
+    const routeDecision = routableWorker.decide?.(workerInput) ?? null;
     const output = await this.worker.run(workerInput);
 
     if (output.kind === "tool_request" || output.kind === "delegate") {
@@ -208,6 +217,7 @@ export class ConversationAiParticipantBridge {
       );
     }
 
+    const selectedModel = routeDecision?.model ?? this.worker.model ?? null;
     const message = await this.engine.appendMessage({
       conversationId: input.conversationId,
       actorParticipantId: input.assistantParticipantId,
@@ -216,15 +226,17 @@ export class ConversationAiParticipantBridge {
       ]),
       aiRun: Object.freeze({
         runId: workerInput.rootIntent.id,
-        model: this.worker.model,
-        routeClass: "conversation-participant",
+        ...(routeDecision?.provider ? { provider: routeDecision.provider } : {}),
+        ...(selectedModel ? { model: selectedModel } : {}),
+        routeClass: routeDecision?.signals.complexity ?? "conversation-participant",
       }),
     });
 
     return Object.freeze({
       messageId: message.id,
-      workerId: this.worker.id,
-      model: this.worker.model ?? null,
+      workerId: routeDecision?.workerId ?? this.worker.id,
+      provider: routeDecision?.provider ?? null,
+      model: selectedModel,
       confidence: output.confidence,
     });
   }
