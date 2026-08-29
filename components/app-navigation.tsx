@@ -178,7 +178,9 @@ export function AppNavigation() {
   const [tripStopCount, setTripStopCount] = useState(0);
   const [tripContext, setTripContext] = useState<TravelerNavTripContext | null>(null);
   const [activeIsland, setActiveIsland] = useState<ActiveIsland>("stt");
-  const contextualConciergeHref = `/concierge?island=${activeIsland}`;
+  const contextualConciergeHref = tripContext
+    ? `/concierge?island=${tripContext.island}&trip=${encodeURIComponent(tripContext.planId)}`
+    : `/concierge?island=${activeIsland}`;
 
   useEffect(() => {
     function refreshTripState() {
