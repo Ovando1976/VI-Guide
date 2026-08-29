@@ -6,7 +6,7 @@ It deliberately does **not** use OpenAI, Anthropic, Gemini, or another provider'
 
 ## Canonical storage shape
 
-The intended persistent layout is:
+The persistent layout is:
 
 ```text
 conversations/{conversationId}
@@ -15,79 +15,23 @@ conversations/{conversationId}
   artifacts/{artifactId}
 ```
 
-Participants, messages, and artifacts should remain separate records/subcollections rather than unbounded arrays on the conversation document. A Firestore adapter can implement `ConversationStore` without changing the domain model.
+Participants, messages, and artifacts remain separate records/subcollections rather than unbounded arrays on the conversation document.
 
-## Conversation kinds
+## Conversation invariants
 
-The first contract supports:
-
-- `direct` — exactly two active human participants, with optional AI assistants;
-- `group` — multi-human private/group chat;
-- `community` — community-scoped discussion;
-- `workspace` — collaborative project/chat surface;
-- `business` — human/business messaging.
-
-## Participant model
-
-A participant is not the same thing as a provider model or a Firebase user record. It is a conversation-scoped actor with:
-
-- `actorType`: `human`, `ai`, `business`, or `system`;
-- a conversation-scoped participant id;
-- an application actor id used only inside the trusted application layer;
-- role (`owner`, `admin`, `member`, `assistant`);
-- explicit read, write, and AI-invocation grants.
-
-The AI-context builder emits the conversation-scoped participant id, not the external actor id. This prevents raw account identifiers from leaking into model requests by default.
-
-## Message model
-
-Messages are composed of provider-neutral parts:
-
-- text;
-- image/video/audio references;
-- file references;
-- locations;
-- shared artifact references;
-- polls;
-- system events.
-
-AI-generated messages may store operational metadata (`runId`, provider, model, route class) for observability. That metadata is intentionally stripped from the content sent back into future AI context. Private chain-of-thought is never part of the message contract.
-
-## Authorization invariants
-
-The engine fails closed when membership or authority is uncertain.
-
-- a participant can send only as itself;
-- only a system participant can emit system message parts;
-- participants require active read/write grants to send;
-- participants can edit only their own non-system messages;
-- owners/admins may remove another participant's message, but deletion creates a tombstone rather than silently editing their text;
-- deleted messages do not enter AI context;
-- AI context requires an active participant with `canInvokeAi`;
-- `ai.access=off` blocks model context entirely;
-- `ai.access=mention` requires an actual triggering message that mentions the configured assistant;
-- `ai.access=active` allows explicit active invocation;
-- the selected assistant must be an active configured AI participant.
-
-## Shared artifacts
-
-Conversation artifacts are references, not embedded editor state. The initial artifact types are:
-
-```text
-document
-plan
-task_list
-poll
-map
-event
-other
-```
-
-This allows the same conversation to attach a collaborative document, trip plan, event, poll, or future workspace object while the owning feature remains responsible for its detailed data model and access controls.
+- Direct chats require exactly two active human participants, with optional AI assistants.
+- Private/group AI access defaults to `off`.
+- `mention` mode requires a real triggering message authored by the requester and explicitly mentioning the configured assistant.
+- Participants cannot send as another human, AI, or system participant.
+- Message edits are sender-only.
+- Owners/admins remove another participant's message via a tombstone rather than silently rewriting history.
+- Deleted and system-only messages never enter AI context.
+- Actor/account ids and prior AI provider/run metadata are excluded from AI context.
+- Shared documents, plans, task lists, polls, maps, and events are referenced as artifacts rather than embedded into messages.
 
 ## AI participant bridge
 
-`ConversationAiParticipantBridge` connects the authorized conversation domain to an `AgentWorker`. In production that worker can be `IslandIntelligenceRouterWorker`, so the existing router still decides between configured OpenAI and gpt-oss workers.
+`ConversationAiParticipantBridge` connects authorized conversation context to an `AgentWorker`. In production the worker can be `IslandIntelligenceRouterWorker`, allowing the existing router to choose between configured OpenAI and gpt-oss workers.
 
 The bridge deliberately does not bypass conversation policy:
 
@@ -98,24 +42,47 @@ The bridge deliberately does not bypass conversation policy:
 5. The AI participant persists its own response through `ConversationEngine.appendMessage()`.
 6. Router provider/model/complexity metadata is retained in `message.aiRun` for auditability but excluded from future model context.
 
-This preserves the same authorization path for human and AI-authored messages while keeping model routing below the conversation layer.
+## Firestore persistence
 
-## Persistence boundary
+`FirestoreConversationStore` implements `ConversationStore` on the server through Firebase Admin.
 
-`ConversationStore` is intentionally storage-neutral. The first implementation, `InMemoryConversationStore`, exists for deterministic domain testing. A production Firestore adapter should preserve the same contract and add transactions/idempotency where required for concurrent message writes.
+New message append is staged until the engine's conversation update arrives. The store then commits the message and `lastMessage` pointer in one Firestore transaction. Message ids are idempotent: an exact duplicate is accepted, while the same id with different content fails closed. Concurrent sends use a monotonic `(createdAt, messageId)` ordering so a delayed older transaction cannot move the conversation preview backward.
+
+Existing message edits/deletions persist directly. Message pagination uses a message-id cursor and deterministic `createdAt + documentId` ordering.
+
+## Authenticated APIs
+
+The browser does not receive unrestricted Admin/Firestore access.
+
+```text
+GET  /api/conversations/{conversationId}/messages
+POST /api/conversations/{conversationId}/messages
+POST /api/conversations/{conversationId}/ai
+```
+
+Each server route verifies a Firebase bearer token and binds the verified Firebase uid to an active human participant before reading or writing conversation data. The client never supplies `senderParticipantId`; sender identity is derived on the server.
+
+The public message response strips internal `aiRun` provider/model metadata.
+
+The AI endpoint additionally verifies the configured assistant participant and conversation AI-access mode before invoking the conversation bridge. Conversation AI uses `USVI_CHAT_MODEL_PROVIDER` (falling back to the general model-provider setting) and can select OpenAI, gpt-oss, or the Island router. `USVI_CHAT_AI_ENABLED=0` hard-disables the endpoint.
+
+## Client boundary
+
+`ConversationClient` provides authenticated load/send/AI-invoke calls. It accepts a Firebase token provider rather than importing Firestore into chat UI components.
 
 ## Verification
 
-Run:
+Focused contracts include:
 
 ```bash
 npx tsx scripts/test-conversation-engine.ts
 npx tsx scripts/test-conversation-ai-bridge.ts
+npx tsx scripts/test-firestore-conversation-store.ts
 npm run typecheck
 ```
 
-The tests cover direct/group validation, sender impersonation denial, read-only participants, sender-only edits, moderator tombstone deletion, AI opt-in and mention enforcement, model-context minimization, deleted-message exclusion, shared artifact references, AI self-authorship, identity minimization, bounded capabilities, and rejection of direct tool execution.
+The Firestore store test uses an in-memory Firestore-compatible harness and does not touch live data. It covers staged append, atomic message/preview commit, monotonic concurrent ordering, direct edits, and duplicate-id conflict rejection.
 
 ## Next milestone
 
-The next layer is the **Firestore conversation adapter plus authenticated API/realtime surface**. It should implement the existing `ConversationStore` contract, preserve fail-closed authorization, and avoid exposing unrestricted collection access to clients.
+Add authenticated realtime delivery (server-owned stream or equally restricted transport), then build the first visible social chat surface on top of `ConversationClient`: thread list, message timeline, composer, reply state, mention-to-AI flow, and loading/error states.
