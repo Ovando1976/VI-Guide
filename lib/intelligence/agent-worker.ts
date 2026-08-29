@@ -121,8 +121,27 @@ export interface AgentWorker {
 
 type FetchLike = typeof fetch;
 
+type SharedResponsesWorkerOptions = {
+  model: string;
+  endpoint: string;
+  apiKey?: string;
+  workerId: string;
+  timeoutMs?: number;
+  maxOutputTokens?: number;
+  fetchImpl?: FetchLike;
+};
+
 type OpenAIAdvisoryAgentWorkerOptions = {
   apiKey: string;
+  model?: string;
+  timeoutMs?: number;
+  maxOutputTokens?: number;
+  fetchImpl?: FetchLike;
+};
+
+export type GptOssAdvisoryAgentWorkerOptions = {
+  endpoint: string;
+  apiKey?: string;
   model?: string;
   timeoutMs?: number;
   maxOutputTokens?: number;
@@ -314,20 +333,26 @@ function validateWorkerOutput(
   });
 }
 
-export class OpenAIAdvisoryAgentWorker implements AgentWorker {
-  readonly id = "openai-advisory-worker";
+class ResponsesAdvisoryAgentWorker implements AgentWorker {
+  readonly id: string;
   readonly model: string;
-  private readonly apiKey: string;
+  private readonly endpoint: string;
+  private readonly apiKey?: string;
   private readonly timeoutMs: number;
   private readonly maxOutputTokens: number;
   private readonly fetchImpl: FetchLike;
 
-  constructor(options: OpenAIAdvisoryAgentWorkerOptions) {
-    if (!options.apiKey.trim()) {
-      throw new Error("OpenAI advisory worker requires an API key.");
+  constructor(options: SharedResponsesWorkerOptions) {
+    if (!options.endpoint.trim()) {
+      throw new Error("Responses advisory worker requires an endpoint.");
     }
-    this.apiKey = options.apiKey;
-    this.model = options.model || process.env.OPENAI_MODEL || "gpt-5.6-sol";
+    if (!options.model.trim()) {
+      throw new Error("Responses advisory worker requires a model.");
+    }
+    this.id = options.workerId;
+    this.model = options.model.trim();
+    this.endpoint = options.endpoint.trim();
+    this.apiKey = options.apiKey?.trim() || undefined;
     this.timeoutMs = Math.max(
       1_000,
       Math.min(options.timeoutMs ?? DEFAULT_TIMEOUT_MS, 12_000),
@@ -344,12 +369,16 @@ export class OpenAIAdvisoryAgentWorker implements AgentWorker {
     const timeout = setTimeout(() => controller.abort(), this.timeoutMs);
 
     try {
-      const response = await this.fetchImpl("https://api.openai.com/v1/responses", {
+      const headers: Record<string, string> = {
+        "Content-Type": "application/json",
+      };
+      if (this.apiKey) {
+        headers.Authorization = `Bearer ${this.apiKey}`;
+      }
+
+      const response = await this.fetchImpl(this.endpoint, {
         method: "POST",
-        headers: {
-          Authorization: `Bearer ${this.apiKey}`,
-          "Content-Type": "application/json",
-        },
+        headers,
         signal: controller.signal,
         body: JSON.stringify({
           model: this.model,
@@ -385,9 +414,58 @@ export class OpenAIAdvisoryAgentWorker implements AgentWorker {
   }
 }
 
+export class OpenAIAdvisoryAgentWorker extends ResponsesAdvisoryAgentWorker {
+  constructor(options: OpenAIAdvisoryAgentWorkerOptions) {
+    if (!options.apiKey.trim()) {
+      throw new Error("OpenAI advisory worker requires an API key.");
+    }
+    super({
+      workerId: "openai-advisory-worker",
+      endpoint: "https://api.openai.com/v1/responses",
+      apiKey: options.apiKey,
+      model: options.model || process.env.OPENAI_MODEL || "gpt-5.6-sol",
+      timeoutMs: options.timeoutMs,
+      maxOutputTokens: options.maxOutputTokens,
+      fetchImpl: options.fetchImpl,
+    });
+  }
+}
+
+export class GptOssAdvisoryAgentWorker extends ResponsesAdvisoryAgentWorker {
+  constructor(options: GptOssAdvisoryAgentWorkerOptions) {
+    super({
+      workerId: "gpt-oss-advisory-worker",
+      endpoint: options.endpoint,
+      apiKey: options.apiKey,
+      model: options.model || "gpt-oss-20b",
+      timeoutMs: options.timeoutMs,
+      maxOutputTokens: options.maxOutputTokens,
+      fetchImpl: options.fetchImpl,
+    });
+  }
+}
+
 export function createConfiguredAdvisoryAgentWorker() {
+  if (process.env.USVI_AGENT_WORKERS_SHADOW !== "1") return null;
+
+  const provider = (process.env.USVI_AGENT_MODEL_PROVIDER || "openai")
+    .trim()
+    .toLowerCase();
+
+  if (provider === "gpt-oss" || provider === "gpt_oss" || provider === "oss") {
+    const endpoint = process.env.GPT_OSS_RESPONSES_URL?.trim();
+    if (!endpoint) return null;
+    return new GptOssAdvisoryAgentWorker({
+      endpoint,
+      apiKey: process.env.GPT_OSS_API_KEY,
+      model: process.env.GPT_OSS_MODEL?.trim() || "gpt-oss-20b",
+    });
+  }
+
+  if (provider !== "openai") return null;
+
   const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey || process.env.USVI_AGENT_WORKERS_SHADOW !== "1") return null;
+  if (!apiKey) return null;
   return new OpenAIAdvisoryAgentWorker({ apiKey });
 }
 
