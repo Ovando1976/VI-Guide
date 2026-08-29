@@ -14,6 +14,20 @@ export type ConversationPage = Readonly<{
   nextCursor: string | null;
 }>;
 
+export type PersonalAiConversation = Readonly<{
+  conversationId: string;
+  title: string;
+  participantId: string;
+  assistantParticipantId: string;
+  aiAccess: "off" | "mention" | "active";
+}>;
+
+export type ConversationConnectionState =
+  | "connecting"
+  | "connected"
+  | "reconnecting"
+  | "offline";
+
 export type ConversationClientTokenProvider = () => Promise<string | null>;
 
 function validId(value: string) {
@@ -31,6 +45,16 @@ async function responseError(response: Response) {
   );
 }
 
+function parseSseBlock(block: string) {
+  let event = "message";
+  const data: string[] = [];
+  for (const line of block.split("\n")) {
+    if (line.startsWith("event:")) event = line.slice(6).trim();
+    if (line.startsWith("data:")) data.push(line.slice(5).trim());
+  }
+  return { event, data: data.join("\n") };
+}
+
 export class ConversationClient {
   constructor(private readonly getToken: ConversationClientTokenProvider) {}
 
@@ -41,6 +65,16 @@ export class ConversationClient {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     };
+  }
+
+  async ensurePersonalAi(): Promise<PersonalAiConversation> {
+    const response = await fetch("/api/conversations/personal-ai", {
+      method: "POST",
+      headers: await this.headers(),
+      cache: "no-store",
+    });
+    if (!response.ok) throw await responseError(response);
+    return Object.freeze((await response.json()) as PersonalAiConversation);
   }
 
   async listMessages(
@@ -76,6 +110,84 @@ export class ConversationClient {
       messages: Object.freeze([...payload.messages]),
       nextCursor: payload.nextCursor ?? null,
     });
+  }
+
+  subscribeMessages(
+    conversationId: string,
+    handlers: Readonly<{
+      onMessage: (message: PublicConversationMessage) => void;
+      onState?: (state: ConversationConnectionState) => void;
+      onError?: (error: Error) => void;
+    }>,
+  ) {
+    if (!validId(conversationId)) throw new Error("Invalid conversation id.");
+
+    const abort = new AbortController();
+    const run = async () => {
+      let first = true;
+      while (!abort.signal.aborted) {
+        handlers.onState?.(first ? "connecting" : "reconnecting");
+        try {
+          const headers = await this.headers();
+          const response = await fetch(
+            `/api/conversations/${encodeURIComponent(conversationId)}/stream`,
+            {
+              method: "GET",
+              headers: { ...headers, Accept: "text/event-stream" },
+              cache: "no-store",
+              signal: abort.signal,
+            },
+          );
+          if (!response.ok) throw await responseError(response);
+          if (!response.body) throw new Error("Realtime response had no stream.");
+
+          handlers.onState?.("connected");
+          first = false;
+          const reader = response.body.getReader();
+          const decoder = new TextDecoder();
+          let buffer = "";
+
+          while (!abort.signal.aborted) {
+            const { value, done } = await reader.read();
+            if (done) break;
+            buffer += decoder.decode(value, { stream: true });
+            const blocks = buffer.split("\n\n");
+            buffer = blocks.pop() ?? "";
+
+            for (const block of blocks) {
+              if (!block.trim()) continue;
+              const parsed = parseSseBlock(block);
+              if (parsed.event === "message" && parsed.data) {
+                handlers.onMessage(
+                  Object.freeze(
+                    JSON.parse(parsed.data) as PublicConversationMessage,
+                  ),
+                );
+              }
+              if (parsed.event === "stream_error") {
+                handlers.onError?.(
+                  new Error("Realtime connection was interrupted."),
+                );
+              }
+            }
+          }
+        } catch (error) {
+          if (abort.signal.aborted) break;
+          handlers.onError?.(
+            error instanceof Error ? error : new Error("Realtime connection failed."),
+          );
+        }
+
+        if (!abort.signal.aborted) {
+          handlers.onState?.("reconnecting");
+          await new Promise((resolve) => setTimeout(resolve, 1_200));
+        }
+      }
+      handlers.onState?.("offline");
+    };
+
+    void run();
+    return () => abort.abort();
   }
 
   async sendText(
