@@ -49,7 +49,10 @@ export function SocialPostDetailScreen({ postId }: { postId: string }) {
       const comment = await client.comment(postId, draft);
       setComments((current) => [...current, comment]);
       if (user && !authors[user.uid]) {
-        try { setAuthors((current) => ({ ...current, [user.uid]: await client.myProfile() })); } catch {}
+        try {
+          const profile = await client.myProfile();
+          setAuthors((current) => ({ ...current, [user.uid]: profile }));
+        } catch {}
       }
       setDraft("");
       if (post) setPost({ ...post, commentCount: post.commentCount + 1 });
