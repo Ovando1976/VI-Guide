@@ -12,7 +12,13 @@ export async function POST(request: NextRequest) {
     const identity = await verifiedSocialIdentity(request);
     await enforceSocialRateLimit(identity.uid, "report", { max: 20, windowSeconds: 3600 });
     const body = await readJsonObject(request);
-    return socialJson({ report: await createSocialReport(identity.uid, body) }, { status: 201 });
+    const report = await createSocialReport(identity.uid, {
+      targetType: body.targetType,
+      targetId: body.targetId,
+      reason: body.reason,
+      details: body.details,
+    });
+    return socialJson({ report }, { status: 201 });
   } catch (error) {
     return socialErrorResponse(error);
   }
