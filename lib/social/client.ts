@@ -133,6 +133,13 @@ export class SocialClient {
     );
   }
 
+  async respondToMessageRequest(conversationId: string, action: "accept" | "decline") {
+    return this.request<{ conversationId: string; state: "accepted" | "declined" }>(
+      "/api/social/conversations/requests",
+      { method: "POST", body: JSON.stringify({ conversationId, action }) },
+    );
+  }
+
   async createGroup(title: string, memberIds: readonly string[]) {
     return this.request<{ conversationId: string; participantId: string; assistantParticipantId: string }>(
       "/api/social/conversations/groups",
