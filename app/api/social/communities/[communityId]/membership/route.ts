@@ -25,7 +25,9 @@ export async function GET(request: NextRequest, { params }: RouteContext) {
 export async function POST(request: NextRequest, { params }: RouteContext) {
   try {
     const identity = await verifiedSocialIdentity(request);
-    const body = await readJsonObject(request).catch(() => ({}));
+    const body: Record<string, unknown> = await readJsonObject(request).catch(
+      () => ({} as Record<string, unknown>),
+    );
     const action = cleanSocialText(body.action, 20) || "join";
     if (action === "approve") {
       const userId = cleanSocialText(body.userId, 160);
