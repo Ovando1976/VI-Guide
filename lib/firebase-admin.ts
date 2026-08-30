@@ -18,6 +18,8 @@ type ServiceAccountRecord = {
   privateKey?: string;
 };
 
+type FirebaseAdminEnvironment = Readonly<Record<string, string | undefined>>;
+
 type FirebaseAdminConfigurationSource =
   | "service_account_json"
   | "individual_service_account"
@@ -34,7 +36,7 @@ function present(value: string | undefined) {
   return typeof value === "string" && value.trim().length > 0;
 }
 
-function applicationDefaultConfigured(env: NodeJS.ProcessEnv) {
+function applicationDefaultConfigured(env: FirebaseAdminEnvironment) {
   return Boolean(
     present(env.GOOGLE_APPLICATION_CREDENTIALS) ||
       present(env.GCLOUD_PROJECT) ||
@@ -43,7 +45,7 @@ function applicationDefaultConfigured(env: NodeJS.ProcessEnv) {
 }
 
 export function getFirebaseAdminConfigurationStatus(
-  env: NodeJS.ProcessEnv = process.env,
+  env: FirebaseAdminEnvironment = process.env,
 ): FirebaseAdminConfigurationStatus {
   const hasJson = Boolean(
     present(env.FIREBASE_SERVICE_ACCOUNT_JSON) ||
@@ -112,7 +114,7 @@ function normalizeServiceAccount(
 }
 
 function readServiceAccount(
-  env: NodeJS.ProcessEnv = process.env,
+  env: FirebaseAdminEnvironment = process.env,
 ): ServiceAccount | null {
   const jsonSources = [
     ["FIREBASE_SERVICE_ACCOUNT_JSON", env.FIREBASE_SERVICE_ACCOUNT_JSON],
