@@ -49,6 +49,7 @@ const ITEMS = [
 // allowed to displace the canonical five-item Social AI navigation.
 export const LEGACY_TRAVEL_DESTINATIONS = [
   { base: "/trips", label: "My Trip" },
+  { base: "/bookings", label: "Bookings" },
   { base: "/map", label: "Live Map" },
   { base: "/concierge", label: "Concierge" },
 ] as const;
@@ -277,7 +278,11 @@ export function AppNavigation() {
   return (
     <nav
       aria-label="Primary navigation"
-      className={clsx("app-nav", pathname === "/social" && "app-nav--home")}
+      className={clsx(
+        "app-nav",
+        pathname === "/social" && "app-nav--home",
+        pathname === "/" && "app-nav--home",
+      )}
       data-concierge-href={contextualConciergeHref}
       data-map-href={contextualMapHref}
       data-places-href={contextualPlacesHref}
