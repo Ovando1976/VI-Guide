@@ -256,6 +256,13 @@ export interface SocialReport {
   updatedAt: string;
 }
 
+export type SocialMessageRequestState =
+  | "none"
+  | "incoming"
+  | "outgoing"
+  | "accepted"
+  | "declined";
+
 export interface SocialConversationInboxItem {
   version: 1;
   conversationId: string;
@@ -264,6 +271,7 @@ export interface SocialConversationInboxItem {
   title: string;
   imageUrl: string | null;
   peerUserIds: readonly string[];
+  requestState: SocialMessageRequestState;
   lastMessageId: string | null;
   lastMessagePreview: string | null;
   lastMessageAt: string | null;
