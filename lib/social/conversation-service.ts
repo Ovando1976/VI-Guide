@@ -4,11 +4,15 @@ import { ConversationEngine } from "@/lib/conversations/conversation-engine";
 import { FirestoreConversationStore } from "@/lib/conversations/firestore-conversation-store";
 import { ensurePersonalAiConversation } from "@/lib/conversations/personal-ai";
 import { getAdminDb } from "@/lib/firebase-admin";
-import { isBlockedBetween } from "@/lib/social/graph-service";
+import { getFollowRelationship, isBlockedBetween } from "@/lib/social/graph-service";
 import { getSocialProfile, publicSocialProfile } from "@/lib/social/profile-service";
 import { cleanSocialText, socialHash, socialNow, socialPairId } from "@/lib/social/utils";
 import type { Conversation, ConversationMessage, ConversationParticipant } from "@/types/conversation";
-import type { PublicSocialProfile, SocialConversationInboxItem } from "@/types/social";
+import type {
+  PublicSocialProfile,
+  SocialConversationInboxItem,
+  SocialMessageRequestState,
+} from "@/types/social";
 
 const INBOX_ROOT = "socialConversationInbox";
 const ASSISTANT_PARTICIPANT_ID = "island-ai";
@@ -52,6 +56,7 @@ async function upsertInboxForConversation(
   conversation: Conversation,
   participants: readonly ConversationParticipant[],
   lastMessage?: ConversationMessage | null,
+  requestStateByUser?: ReadonlyMap<string, SocialMessageRequestState>,
 ) {
   const db = getAdminDb();
   const profiles = await humanParticipantProfiles(participants);
@@ -81,6 +86,9 @@ async function upsertInboxForConversation(
       ? messagePreview(lastMessage)
       : conversation.lastMessage?.preview ?? null;
     const lastMessageAt = lastMessage?.createdAt ?? conversation.lastMessage?.createdAt ?? null;
+    const requestState = requestStateByUser?.get(participant.actorId)
+      ?? current?.requestState
+      ?? (conversation.kind === "direct" ? "accepted" : "none");
     const item: SocialConversationInboxItem = {
       version: 1,
       conversationId: conversation.id,
@@ -89,6 +97,7 @@ async function upsertInboxForConversation(
       title,
       imageUrl,
       peerUserIds: Object.freeze(peerIds),
+      requestState,
       lastMessageId,
       lastMessagePreview,
       lastMessageAt,
@@ -125,21 +134,36 @@ export async function ensureDirectSocialConversation(userId: string, targetUserI
   const store = new FirestoreConversationStore();
   let conversation = await store.getConversation(conversationId);
   const now = socialNow();
-  const ids = [userId, targetUserId];
-  const participants = ids.map((actorId, index) => Object.freeze({
-    id: participantId(actorId),
-    conversationId,
-    actorType: "human" as const,
-    actorId,
-    role: index === 0 ? "owner" as const : "member" as const,
-    joinedAt: now,
-    leftAt: null,
-    canRead: true,
-    canWrite: true,
-    canInvokeAi: false,
-  }));
 
   if (!conversation) {
+    const relationship = await getFollowRelationship(targetUserId, userId);
+    const trusted = relationship.outgoing?.status === "accepted";
+    const participants = [
+      Object.freeze({
+        id: participantId(userId),
+        conversationId,
+        actorType: "human" as const,
+        actorId: userId,
+        role: "owner" as const,
+        joinedAt: now,
+        leftAt: null,
+        canRead: true,
+        canWrite: true,
+        canInvokeAi: false,
+      }),
+      Object.freeze({
+        id: participantId(targetUserId),
+        conversationId,
+        actorType: "human" as const,
+        actorId: targetUserId,
+        role: "member" as const,
+        joinedAt: now,
+        leftAt: null,
+        canRead: true,
+        canWrite: trusted,
+        canInvokeAi: false,
+      }),
+    ];
     const engine = new ConversationEngine(store);
     conversation = await engine.createConversation({
       id: conversationId,
@@ -150,21 +174,92 @@ export async function ensureDirectSocialConversation(userId: string, targetUserI
       createdByParticipantId: participantId(userId),
       participants,
     });
+    const requestStates = new Map<string, SocialMessageRequestState>([
+      [userId, trusted ? "accepted" : "outgoing"],
+      [targetUserId, trusted ? "accepted" : "incoming"],
+    ]);
+    await upsertInboxForConversation(conversation, participants, null, requestStates);
   } else {
+    const ids = [userId, targetUserId];
+    const participants = ids.map((actorId, index) => Object.freeze({
+      id: participantId(actorId),
+      conversationId,
+      actorType: "human" as const,
+      actorId,
+      role: index === 0 ? "owner" as const : "member" as const,
+      joinedAt: now,
+      leftAt: null,
+      canRead: true,
+      canWrite: true,
+      canInvokeAi: false,
+    }));
     for (const participant of participants) {
       const existing = await store.getParticipant(conversationId, participant.id);
       if (!existing) await store.putParticipant(participant);
     }
+    const activeParticipants = await store.listParticipants(conversationId);
+    await upsertInboxForConversation(conversation, activeParticipants, null);
   }
 
-  const activeParticipants = await store.listParticipants(conversationId);
-  await upsertInboxForConversation(conversation, activeParticipants, null);
   return {
     conversationId,
     participantId: participantId(userId),
     peer: publicSocialProfile(target),
     aiAccess: conversation.ai.access,
   };
+}
+
+export async function respondToSocialMessageRequest(
+  userId: string,
+  conversationId: string,
+  action: "accept" | "decline",
+) {
+  const store = new FirestoreConversationStore();
+  const conversation = await store.getConversation(conversationId);
+  if (!conversation || conversation.kind !== "direct") throw new Error("Message request was not found.");
+  const self = await store.getParticipant(conversationId, participantId(userId));
+  if (!self || self.leftAt) throw new Error("Message request is unavailable.");
+  const inboxRef = inboxCollection(userId).doc(conversationId);
+  const inboxSnapshot = await inboxRef.get();
+  const inbox = inboxSnapshot.exists ? (inboxSnapshot.data() as SocialConversationInboxItem) : null;
+  if (!inbox || inbox.requestState !== "incoming") throw new Error("Message request is no longer pending.");
+  const participants = await store.listParticipants(conversationId);
+  const peer = participants.find((participant) => participant.actorType === "human" && !participant.leftAt && participant.actorId !== userId);
+  if (!peer) throw new Error("Message request sender was not found.");
+  if (await isBlockedBetween(userId, peer.actorId)) throw new Error("This conversation is unavailable.");
+  const now = socialNow();
+  const db = getAdminDb();
+  const batch = db.batch();
+
+  if (action === "accept") {
+    await store.putParticipant(Object.freeze({ ...self, canRead: true, canWrite: true }));
+    if (!peer.canWrite) await store.putParticipant(Object.freeze({ ...peer, canRead: true, canWrite: true }));
+    batch.set(inboxCollection(userId).doc(conversationId), {
+      requestState: "accepted",
+      archivedAt: null,
+      updatedAt: now,
+    }, { merge: true });
+    batch.set(inboxCollection(peer.actorId).doc(conversationId), {
+      requestState: "accepted",
+      archivedAt: null,
+      updatedAt: now,
+    }, { merge: true });
+  } else {
+    await store.putParticipant(Object.freeze({ ...self, canWrite: false }));
+    await store.putParticipant(Object.freeze({ ...peer, canWrite: false }));
+    batch.set(inboxCollection(userId).doc(conversationId), {
+      requestState: "declined",
+      archivedAt: now,
+      unreadCount: 0,
+      updatedAt: now,
+    }, { merge: true });
+    batch.set(inboxCollection(peer.actorId).doc(conversationId), {
+      requestState: "declined",
+      updatedAt: now,
+    }, { merge: true });
+  }
+  await batch.commit();
+  return { conversationId, state: action === "accept" ? "accepted" as const : "declined" as const };
 }
 
 export async function createSocialGroupConversation(
@@ -281,7 +376,13 @@ export async function listSocialConversationInbox(userId: string, limit = 100) {
     .orderBy("updatedAt", "desc")
     .limit(Math.max(1, Math.min(limit, 150)))
     .get();
-  return snapshot.docs.map((doc) => doc.data() as SocialConversationInboxItem);
+  return snapshot.docs.map((doc) => {
+    const item = doc.data() as SocialConversationInboxItem;
+    return {
+      ...item,
+      requestState: item.requestState ?? (item.kind === "direct" ? "accepted" : "none"),
+    } satisfies SocialConversationInboxItem;
+  });
 }
 
 export async function updateSocialConversationInbox(
