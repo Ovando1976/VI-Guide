@@ -2,8 +2,7 @@ import type { NextRequest } from "next/server";
 
 import {
   listSocialConversationInbox,
-  markSocialConversationRead,
-  setSocialConversationPinned,
+  updateSocialConversationInbox,
 } from "@/lib/social/conversation-service";
 import { socialErrorResponse, socialJson, readJsonObject } from "@/lib/social/http";
 import { verifiedSocialIdentity } from "@/lib/social/server-auth";
@@ -28,9 +27,13 @@ export async function PATCH(request: NextRequest) {
     const conversationId = cleanSocialText(body.conversationId, 160);
     if (!conversationId) throw new Error("Conversation is required.");
     if (body.action === "pin") {
-      await setSocialConversationPinned(identity.uid, conversationId, Boolean(body.pinned));
+      await updateSocialConversationInbox(identity.uid, conversationId, {
+        pinned: Boolean(body.pinned),
+      });
     } else {
-      await markSocialConversationRead(identity.uid, conversationId, cleanSocialText(body.messageId, 160) || null);
+      await updateSocialConversationInbox(identity.uid, conversationId, {
+        readMessageId: cleanSocialText(body.messageId, 160) || null,
+      });
     }
     return socialJson({ ok: true });
   } catch (error) {
