@@ -1,11 +1,10 @@
-import { NotificationCenter } from "@/components/notifications/notification-center";
+import { SocialNotificationsScreen } from "@/components/social/social-notifications-screen";
 
 export const metadata = {
-  title: "Notifications | USVI Explorer",
-  description:
-    "Review booking, mission, provider, Concierge, and operations notifications in one live inbox.",
+  title: "Notifications",
+  description: "Messages, follows, replies, community activity and social updates on Island.",
 };
 
-export default function NotificationsPage() {
-  return <NotificationCenter audience="traveler" />;
+export default function SocialNotificationsPage() {
+  return <SocialNotificationsScreen />;
 }
