@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 
 import { getFirebaseAdminConfigurationStatus } from "../lib/firebase-admin";
 
-function status(env: NodeJS.ProcessEnv) {
+function status(env: Readonly<Record<string, string | undefined>>) {
   return getFirebaseAdminConfigurationStatus(env);
 }
 
