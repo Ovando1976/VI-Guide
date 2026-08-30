@@ -11,6 +11,10 @@ import {
   ConversationPolicyError,
   assertCanWrite,
 } from "@/lib/conversations/conversation-policy";
+import { recordSocialMessageForInbox } from "@/lib/social/conversation-service";
+import { createSocialNotification } from "@/lib/social/notification-service";
+import { getSocialProfile } from "@/lib/social/profile-service";
+import { enforceSocialRateLimit } from "@/lib/social/rate-limit";
 import type { ConversationMessage } from "@/types/conversation";
 
 export const runtime = "nodejs";
@@ -47,6 +51,10 @@ function errorResponse(error: unknown) {
       { error: error.message, code: error.code },
       { status: policyStatus(error) },
     );
+  }
+  const message = error instanceof Error ? error.message : "";
+  if (/too many requests/i.test(message)) {
+    return NextResponse.json({ error: message }, { status: 429 });
   }
   console.error("Conversation message API failed.", error);
   return NextResponse.json(
@@ -108,26 +116,16 @@ export async function POST(
     }
 
     const userId = await verifiedConversationUserId(request);
+    await enforceSocialRateLimit(userId, "send_message", { max: 240, windowSeconds: 3600 });
     const store = new FirestoreConversationStore();
     const engine = new ConversationEngine(store);
-    const participant = await bindConversationParticipant(
-      store,
-      conversationId,
-      userId,
-    );
+    const participant = await bindConversationParticipant(store, conversationId, userId);
     assertCanWrite(participant);
 
     const payload = (await request.json().catch(() => null)) as
-      | {
-          text?: unknown;
-          id?: unknown;
-          replyToMessageId?: unknown;
-          mentions?: unknown;
-        }
+      | { text?: unknown; id?: unknown; replyToMessageId?: unknown; mentions?: unknown }
       | null;
-    if (!payload) {
-      return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
-    }
+    if (!payload) return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
 
     const text = typeof payload.text === "string" ? payload.text.trim() : "";
     if (!text || text.length > 4_000) {
@@ -138,14 +136,8 @@ export async function POST(
     }
 
     const id = typeof payload.id === "string" ? payload.id.trim() : undefined;
-    if (id && !validId(id)) {
-      return NextResponse.json({ error: "Invalid message id." }, { status: 400 });
-    }
-
-    const replyToMessageId =
-      typeof payload.replyToMessageId === "string"
-        ? payload.replyToMessageId.trim()
-        : undefined;
+    if (id && !validId(id)) return NextResponse.json({ error: "Invalid message id." }, { status: 400 });
+    const replyToMessageId = typeof payload.replyToMessageId === "string" ? payload.replyToMessageId.trim() : undefined;
     if (replyToMessageId && !validId(replyToMessageId)) {
       return NextResponse.json({ error: "Invalid reply target." }, { status: 400 });
     }
@@ -169,6 +161,30 @@ export async function POST(
       ...(replyToMessageId ? { replyToMessageId } : {}),
       ...(mentions?.length ? { mentions } : {}),
     });
+
+    await recordSocialMessageForInbox(conversationId, message);
+
+    const [participants, senderProfile] = await Promise.all([
+      store.listParticipants(conversationId),
+      getSocialProfile(userId),
+    ]);
+    await Promise.all(
+      participants
+        .filter((other) => other.actorType === "human" && !other.leftAt && other.actorId !== userId)
+        .map((other) =>
+          createSocialNotification({
+            userId: other.actorId,
+            actorId: userId,
+            type: mentions?.includes(other.id) ? "mention" : "message",
+            title: mentions?.includes(other.id)
+              ? `${senderProfile?.displayName ?? "Someone"} mentioned you`
+              : `New message from ${senderProfile?.displayName ?? "someone"}`,
+            body: text.slice(0, 160),
+            href: `/chats?conversation=${encodeURIComponent(conversationId)}`,
+            dedupeKey: message.id,
+          }),
+        ),
+    );
 
     return NextResponse.json(
       { message: publicMessage(message) },
