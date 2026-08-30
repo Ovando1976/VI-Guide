@@ -126,6 +126,28 @@ function isActive(pathname: string, base: (typeof ITEMS)[number]["base"]) {
   return pathname === base || pathname.startsWith(`${base}/`);
 }
 
+function contextualHref(
+  base: string,
+  island: ActiveIsland,
+  tripContext: TravelerNavTripContext | null,
+) {
+  if (base === "/places") return `/places?island=${island}`;
+  if (base === "/trips" && tripContext) {
+    return `/trips?trip=${encodeURIComponent(tripContext.planId)}`;
+  }
+  if (base === "/map") {
+    return tripContext
+      ? `/map?island=${tripContext.island}&trip=${encodeURIComponent(tripContext.planId)}`
+      : `/map?island=${island}`;
+  }
+  if (base === "/concierge") {
+    return tripContext
+      ? `/concierge?island=${tripContext.island}&trip=${encodeURIComponent(tripContext.planId)}`
+      : `/concierge?island=${island}`;
+  }
+  return base;
+}
+
 function operationsItemsFor(pathname: string): OperationsNavItem[] | null {
   if (matchesRoute(pathname, ["/admin", "/architecture"])) {
     return ADMIN_OPERATIONS_ITEMS;
@@ -164,16 +186,10 @@ export function AppNavigation() {
   const pathname = usePathname();
   const [tripContext, setTripContext] = useState<TravelerNavTripContext | null>(null);
   const [activeIsland, setActiveIsland] = useState<ActiveIsland>("stt");
-  const contextualTripsHref = tripContext
-    ? `/trips?trip=${encodeURIComponent(tripContext.planId)}`
-    : "/trips";
-  const contextualConciergeHref = tripContext
-    ? `/concierge?island=${tripContext.island}&trip=${encodeURIComponent(tripContext.planId)}`
-    : `/concierge?island=${activeIsland}`;
-  const contextualMapHref = tripContext
-    ? `/map?island=${tripContext.island}&trip=${encodeURIComponent(tripContext.planId)}`
-    : `/map?island=${activeIsland}`;
-  const contextualPlacesHref = `/places?island=${activeIsland}`;
+  const contextualTripsHref = contextualHref("/trips", activeIsland, tripContext);
+  const contextualConciergeHref = contextualHref("/concierge", activeIsland, tripContext);
+  const contextualMapHref = contextualHref("/map", activeIsland, tripContext);
+  const contextualPlacesHref = contextualHref("/places", activeIsland, tripContext);
 
   useEffect(() => {
     function refreshTripState() {
@@ -301,10 +317,11 @@ export function AppNavigation() {
 
       {ITEMS.map(({ base, label, icon: Icon }) => {
         const active = isActive(pathname, base);
+        const href = contextualHref(base, activeIsland, tripContext);
         return (
           <Link
             key={base}
-            href={base}
+            href={href}
             aria-label={label}
             aria-current={active ? "page" : undefined}
             data-nav={base.slice(1).replaceAll("/", "-")}
