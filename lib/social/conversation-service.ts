@@ -74,37 +74,30 @@ async function upsertInboxForConversation(
     const itemRef = inboxCollection(participant.actorId).doc(conversation.id);
     const existing = await itemRef.get();
     const current = existing.exists ? (existing.data() as SocialConversationInboxItem) : null;
+    const kind: SocialConversationInboxItem["kind"] =
+      conversation.kind === "workspace" ? "ai_private" : conversation.kind;
+    const lastMessageId = lastMessage?.id ?? conversation.lastMessage?.id ?? null;
+    const lastMessagePreview = lastMessage
+      ? messagePreview(lastMessage)
+      : conversation.lastMessage?.preview ?? null;
+    const lastMessageAt = lastMessage?.createdAt ?? conversation.lastMessage?.createdAt ?? null;
     const item: SocialConversationInboxItem = {
       version: 1,
       conversationId: conversation.id,
       userId: participant.actorId,
-      kind: conversation.kind,
-      participantId: participant.id,
+      kind,
       title,
       imageUrl,
       peerUserIds: Object.freeze(peerIds),
-      aiAccess: conversation.ai.access,
-      assistantParticipantIds: conversation.ai.assistantParticipantIds,
-      lastMessage: lastMessage
-        ? {
-            id: lastMessage.id,
-            preview: messagePreview(lastMessage),
-            senderParticipantId: lastMessage.senderParticipantId,
-            createdAt: lastMessage.createdAt,
-          }
-        : conversation.lastMessage
-          ? {
-              id: conversation.lastMessage.id,
-              preview: conversation.lastMessage.preview,
-              senderParticipantId: conversation.lastMessage.senderParticipantId,
-              createdAt: conversation.lastMessage.createdAt,
-            }
-          : null,
-      unreadCount: current?.unreadCount ?? 0,
+      lastMessageId,
+      lastMessagePreview,
+      lastMessageAt,
       lastReadMessageId: current?.lastReadMessageId ?? null,
+      unreadCount: current?.unreadCount ?? 0,
       pinnedAt: current?.pinnedAt ?? null,
       mutedUntil: current?.mutedUntil ?? null,
-      updatedAt: now,
+      archivedAt: current?.archivedAt ?? null,
+      updatedAt: lastMessageAt ?? current?.updatedAt ?? conversation.updatedAt ?? now,
     };
     batch.set(itemRef, item, { merge: true });
   }
