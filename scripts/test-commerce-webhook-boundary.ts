@@ -12,7 +12,7 @@ async function main() {
 
   process.env.STRIPE_SECRET_KEY = stripeSecretKey;
   process.env.STRIPE_COMMERCE_WEBHOOK_SECRET = webhookSecret;
-  process.env.FIREBASE_PROJECT_ID = "vi-guide-webhook-boundary-test";
+  process.env.GCLOUD_PROJECT = "vi-guide-webhook-boundary-test";
 
   const [{ NextRequest }, { POST }] = await Promise.all([
     import("next/server"),

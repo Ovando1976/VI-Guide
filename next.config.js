@@ -14,6 +14,18 @@ const nextConfig = {
       { protocol: "https", hostname: "commons.wikimedia.org" },
     ],
   },
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+        ],
+      },
+    ];
+  },
   webpack(config, { dev }) {
     if (dev) {
       // CodeSandbox's mounted filesystem does not reliably support webpack's
