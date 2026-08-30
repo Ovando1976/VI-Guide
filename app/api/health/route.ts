@@ -18,14 +18,15 @@ export async function GET() {
     firebaseAdminConfigured &&
     stripeConfigured &&
     stripeCommerceWebhookConfigured;
-  const notificationReady = notificationConfigurationStatus({
+  const notificationConfiguration = notificationConfigurationStatus({
     firebaseAdminConfigured,
     resendApiKey: process.env.RESEND_API_KEY,
     emailFrom: process.env.VI_GUIDE_EMAIL_FROM,
     operationsEmails: process.env.VI_GUIDE_OPERATIONS_EMAILS,
     cronSecret: process.env.CRON_SECRET,
     appUrl: process.env.VI_GUIDE_APP_URL,
-  }).ready;
+  });
+  const notificationReady = notificationConfiguration.ready;
 
   return NextResponse.json(
     {
@@ -42,6 +43,23 @@ export async function GET() {
         stripeConfigured,
         stripeWebhookConfigured,
         stripeCommerceWebhookConfigured,
+      },
+      diagnostics: {
+        // Never expose credential values. These presence/validation signals make
+        // production readiness actionable without leaking secrets.
+        notifications: {
+          ready: notificationConfiguration.ready,
+          emailProviderConfigured:
+            notificationConfiguration.emailProviderConfigured,
+          senderConfigured: notificationConfiguration.senderConfigured,
+          operationsRecipientsConfigured:
+            notificationConfiguration.operationsRecipientsConfigured,
+          cronSecretConfigured: notificationConfiguration.cronSecretConfigured,
+          appUrlConfigured: notificationConfiguration.appUrlConfigured,
+          operationsRecipientCount:
+            notificationConfiguration.operationsRecipientCount,
+          missing: notificationConfiguration.missing,
+        },
       },
       timestamp: new Date().toISOString(),
     },
