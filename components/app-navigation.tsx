@@ -9,10 +9,11 @@ import {
   Compass,
   House,
   Map,
-  Route,
+  MessageCircle,
+  PlusCircle,
   ShieldCheck,
-  Sparkles,
   Store,
+  UserRound,
   WalletCards,
 } from "lucide-react";
 import clsx from "clsx";
@@ -37,14 +38,31 @@ import {
 } from "@/lib/traveler-trip-selection";
 
 const ITEMS = [
-  { base: "/", label: "Home", icon: House },
-  { base: "/places", label: "Explore", icon: Compass },
-  { base: "/map", label: "Live Map", icon: Map },
-  { base: "/trips", label: "My Trip", icon: Route },
-  { base: "/concierge", label: "Concierge", icon: Sparkles },
+  { base: "/social", label: "Home", icon: House },
+  { base: "/chats", label: "Chats", icon: MessageCircle },
+  { base: "/discover", label: "Discover", icon: Compass },
+  { base: "/create", label: "Create", icon: PlusCircle },
+  { base: "/profile/social", label: "Profile", icon: UserRound },
 ] as const;
 
-const EXPLORE_ROUTES = [
+// Existing traveler workspaces remain valid deep links, but they are no longer
+// allowed to displace the canonical five-item Social AI navigation.
+export const LEGACY_TRAVEL_DESTINATIONS = [
+  { base: "/trips", label: "My Trip" },
+  { base: "/planner", label: "Planner" },
+  { base: "/plan", label: "Plan" },
+  { base: "/today", label: "My Day" },
+  { base: "/trip-planning", label: "Trip Planning" },
+  { base: "/book", label: "Book" },
+  { base: "/bookings", label: "Bookings" },
+  { base: "/checkout", label: "Checkout" },
+  { base: "/shared-trip", label: "Shared Trip" },
+  { base: "/map", label: "Live Map" },
+  { base: "/concierge", label: "Concierge" },
+] as const;
+
+const DISCOVER_ROUTES = [
+  "/discover",
   "/places",
   "/beaches",
   "/heritage",
@@ -60,22 +78,16 @@ const EXPLORE_ROUTES = [
   "/cruises",
   "/shore-excursions",
   "/community",
+  "/communities",
+  "/concierge",
+  "/intelligence",
+  "/mission",
   "/search",
   "/saved",
+  "/map",
 ] as const;
 
-const TRIP_ROUTES = [
-  "/trips",
-  "/planner",
-  "/plan",
-  "/today",
-  "/trip-planning",
-  "/book",
-  "/bookings",
-  "/checkout",
-  "/shared-trip",
-] as const;
-const CONCIERGE_ROUTES = ["/concierge", "/intelligence", "/mission"] as const;
+const PROFILE_ROUTES = ["/profile", "/u", "/notifications"] as const;
 
 type OperationsNavItem = {
   base: string;
@@ -115,11 +127,32 @@ function matchesRoute(pathname: string, routes: readonly string[]) {
 }
 
 function isActive(pathname: string, base: (typeof ITEMS)[number]["base"]) {
-  if (base === "/") return pathname === "/";
-  if (base === "/places") return matchesRoute(pathname, EXPLORE_ROUTES);
-  if (base === "/trips") return matchesRoute(pathname, TRIP_ROUTES);
-  if (base === "/concierge") return matchesRoute(pathname, CONCIERGE_ROUTES);
+  if (base === "/social") return pathname === "/social";
+  if (base === "/discover") return matchesRoute(pathname, DISCOVER_ROUTES);
+  if (base === "/profile/social") return matchesRoute(pathname, PROFILE_ROUTES);
   return pathname === base || pathname.startsWith(`${base}/`);
+}
+
+function contextualHref(
+  base: string,
+  island: ActiveIsland,
+  tripContext: TravelerNavTripContext | null,
+) {
+  if (base === "/places") return `/places?island=${island}`;
+  if (base === "/trips" && tripContext) {
+    return `/trips?trip=${encodeURIComponent(tripContext.planId)}`;
+  }
+  if (base === "/map") {
+    return tripContext
+      ? `/map?island=${tripContext.island}&trip=${encodeURIComponent(tripContext.planId)}`
+      : `/map?island=${island}`;
+  }
+  if (base === "/concierge") {
+    return tripContext
+      ? `/concierge?island=${tripContext.island}&trip=${encodeURIComponent(tripContext.planId)}`
+      : `/concierge?island=${island}`;
+  }
+  return base;
 }
 
 function operationsItemsFor(pathname: string): OperationsNavItem[] | null {
@@ -156,42 +189,18 @@ function isOperationsActive(pathname: string, base: string) {
   return pathname === base || pathname.startsWith(`${base}/`);
 }
 
-function contextualHref(
-  base: (typeof ITEMS)[number]["base"],
-  island: ActiveIsland,
-  tripContext: TravelerNavTripContext | null,
-) {
-  if (base === "/places") return `/places?island=${island}`;
-  if (base === "/trips" && tripContext) {
-    return `/trips?trip=${encodeURIComponent(tripContext.planId)}`;
-  }
-  if (base === "/map") {
-    if (!tripContext) return `/map?island=${island}`;
-    return `/map?island=${tripContext.island}&trip=${encodeURIComponent(tripContext.planId)}`;
-  }
-  if (base === "/concierge") {
-    if (!tripContext) return `/concierge?island=${island}`;
-    return `/concierge?island=${tripContext.island}&trip=${encodeURIComponent(tripContext.planId)}`;
-  }
-  return base;
-}
-
 export function AppNavigation() {
   const pathname = usePathname();
-  const [tripStopCount, setTripStopCount] = useState(0);
   const [tripContext, setTripContext] = useState<TravelerNavTripContext | null>(null);
   const [activeIsland, setActiveIsland] = useState<ActiveIsland>("stt");
+  const contextualTripsHref = contextualHref("/trips", activeIsland, tripContext);
+  const contextualConciergeHref = contextualHref("/concierge", activeIsland, tripContext);
+  const contextualMapHref = contextualHref("/map", activeIsland, tripContext);
+  const contextualPlacesHref = contextualHref("/places", activeIsland, tripContext);
 
   useEffect(() => {
     function refreshTripState() {
       const plans = readJourneyPlans();
-      setTripStopCount(
-        plans.reduce(
-          (total, plan) => total + plan.plan.length,
-          0,
-        ),
-      );
-
       const selectedPlanId = readSelectedTravelerTripPlanId();
       const selectedPlan = selectedPlanId
         ? plans.find((plan) => plan.id === selectedPlanId) ?? null
@@ -297,40 +306,36 @@ export function AppNavigation() {
       aria-label="Primary navigation"
       className={clsx(
         "app-nav",
+        pathname === "/social" && "app-nav--home",
         pathname === "/" && "app-nav--home",
-        pathname === "/ferry" && "app-nav--ferry",
       )}
+      data-trip-href={contextualTripsHref}
+      data-concierge-href={contextualConciergeHref}
+      data-map-href={contextualMapHref}
+      data-places-href={contextualPlacesHref}
     >
       <Link
-        href="/"
+        href="/social"
         className="app-nav__brand"
-        aria-label="USVI Explorer home"
+        aria-label="Island Social home"
       >
         <ViBrandMark className="h-9 w-9 shrink-0" />
       </Link>
 
       {ITEMS.map(({ base, label, icon: Icon }) => {
         const active = isActive(pathname, base);
-        const isTrip = base === "/trips";
-        const isMap = base === "/map";
-        const isConcierge = base === "/concierge";
         const href = contextualHref(base, activeIsland, tripContext);
-        const accessibleLabel =
-          isTrip && tripStopCount
-            ? `${label}, ${tripStopCount} saved ${tripStopCount === 1 ? "stop" : "stops"}`
-            : label;
-
         return (
           <Link
             key={base}
             href={href}
-            aria-label={accessibleLabel}
+            aria-label={label}
             aria-current={active ? "page" : undefined}
-            data-nav={base === "/" ? "home" : base.slice(1)}
+            data-nav={base.slice(1).replaceAll("/", "-")}
             className={clsx(
               "app-nav__item relative",
-              isMap && "app-nav__item--map",
-              isConcierge && "app-nav__item--concierge",
+              base === "/create" && "app-nav__item--create",
+              base === "/discover" && matchesRoute(pathname, ["/map"]) && "app-nav__item--map",
               active && "is-active",
             )}
           >
@@ -338,14 +343,6 @@ export function AppNavigation() {
               <Icon size={19} strokeWidth={2.2} />
             </span>
             <span>{label}</span>
-            {isTrip && tripStopCount ? (
-              <span
-                aria-hidden="true"
-                className="app-nav__badge"
-              >
-                {tripStopCount > 99 ? "99+" : tripStopCount}
-              </span>
-            ) : null}
           </Link>
         );
       })}

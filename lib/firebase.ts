@@ -21,8 +21,10 @@ export const hasFirebaseClientConfiguration = Boolean(
 
 // The app container can be created while Next.js prerenders public routes.
 // Firebase Auth cannot: getAuth() validates the API key immediately. Keep Auth
-// browser-only and use the exact NEXT_PUBLIC_FIREBASE_* values configured in
-// Vercel. No placeholder project or invented API key is substituted.
+// browser-only and use only the environment-specific NEXT_PUBLIC_FIREBASE_*
+// values configured for the active Vercel environment. Missing configuration
+// intentionally disables browser authentication instead of falling back to a
+// different Firebase project.
 export const firebaseApp = getApps().length
   ? getApps()[0]
   : initializeApp(firebaseConfig);
