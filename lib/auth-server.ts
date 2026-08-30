@@ -24,8 +24,7 @@ export type AppSession = {
 };
 
 export async function getSession(): Promise<AppSession | null> {
-  const cookieStore = await cookies();
-  const value = cookieStore.get(SESSION_COOKIE)?.value;
+  const value = cookies().get(SESSION_COOKIE)?.value;
   if (!value) return null;
   try {
     const token = await getAdminAuth().verifySessionCookie(value, true);
