@@ -31,9 +31,16 @@ export function socialHash(...parts: string[]) {
   return createHash("sha256").update(parts.join("\u0000")).digest("hex");
 }
 
-export function socialPairId(prefix: string, left: string, right: string) {
+export function socialPairId(left: string, right: string): string;
+export function socialPairId(prefix: string, left: string, right: string): string;
+export function socialPairId(prefixOrLeft: string, leftOrRight: string, maybeRight?: string) {
+  const hasPrefix = maybeRight !== undefined;
+  const prefix = hasPrefix ? prefixOrLeft : null;
+  const left = hasPrefix ? leftOrRight : prefixOrLeft;
+  const right = hasPrefix ? maybeRight : leftOrRight;
   const [a, b] = [left, right].sort();
-  return `${prefix}_${socialHash(a, b).slice(0, 32)}`;
+  const pairHash = socialHash(a, b).slice(0, 32);
+  return prefix ? `${prefix}_${pairHash}` : pairHash;
 }
 
 export function socialRelationId(prefix: string, actorId: string, targetId: string) {
