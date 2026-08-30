@@ -9,9 +9,9 @@ import {
   Compass,
   House,
   Map,
+  MessageCircle,
   Route,
   ShieldCheck,
-  Sparkles,
   Store,
   WalletCards,
 } from "lucide-react";
@@ -38,10 +38,10 @@ import {
 
 const ITEMS = [
   { base: "/", label: "Home", icon: House },
-  { base: "/places", label: "Explore", icon: Compass },
+  { base: "/chats", label: "Chats", icon: MessageCircle },
+  { base: "/places", label: "Discover", icon: Compass },
   { base: "/map", label: "Live Map", icon: Map },
   { base: "/trips", label: "My Trip", icon: Route },
-  { base: "/concierge", label: "Concierge", icon: Sparkles },
 ] as const;
 
 const EXPLORE_ROUTES = [
@@ -60,6 +60,9 @@ const EXPLORE_ROUTES = [
   "/cruises",
   "/shore-excursions",
   "/community",
+  "/concierge",
+  "/intelligence",
+  "/mission",
   "/search",
   "/saved",
 ] as const;
@@ -75,7 +78,6 @@ const TRIP_ROUTES = [
   "/checkout",
   "/shared-trip",
 ] as const;
-const CONCIERGE_ROUTES = ["/concierge", "/intelligence", "/mission"] as const;
 
 type OperationsNavItem = {
   base: string;
@@ -118,7 +120,6 @@ function isActive(pathname: string, base: (typeof ITEMS)[number]["base"]) {
   if (base === "/") return pathname === "/";
   if (base === "/places") return matchesRoute(pathname, EXPLORE_ROUTES);
   if (base === "/trips") return matchesRoute(pathname, TRIP_ROUTES);
-  if (base === "/concierge") return matchesRoute(pathname, CONCIERGE_ROUTES);
   return pathname === base || pathname.startsWith(`${base}/`);
 }
 
@@ -169,10 +170,6 @@ function contextualHref(
     if (!tripContext) return `/map?island=${island}`;
     return `/map?island=${tripContext.island}&trip=${encodeURIComponent(tripContext.planId)}`;
   }
-  if (base === "/concierge") {
-    if (!tripContext) return `/concierge?island=${island}`;
-    return `/concierge?island=${tripContext.island}&trip=${encodeURIComponent(tripContext.planId)}`;
-  }
   return base;
 }
 
@@ -181,6 +178,9 @@ export function AppNavigation() {
   const [tripStopCount, setTripStopCount] = useState(0);
   const [tripContext, setTripContext] = useState<TravelerNavTripContext | null>(null);
   const [activeIsland, setActiveIsland] = useState<ActiveIsland>("stt");
+  const contextualConciergeHref = tripContext
+    ? `/concierge?island=${tripContext.island}&trip=${encodeURIComponent(tripContext.planId)}`
+    : `/concierge?island=${activeIsland}`;
 
   useEffect(() => {
     function refreshTripState() {
@@ -313,7 +313,6 @@ export function AppNavigation() {
         const active = isActive(pathname, base);
         const isTrip = base === "/trips";
         const isMap = base === "/map";
-        const isConcierge = base === "/concierge";
         const href = contextualHref(base, activeIsland, tripContext);
         const accessibleLabel =
           isTrip && tripStopCount
@@ -327,10 +326,12 @@ export function AppNavigation() {
             aria-label={accessibleLabel}
             aria-current={active ? "page" : undefined}
             data-nav={base === "/" ? "home" : base.slice(1)}
+            data-concierge-href={
+              base === "/places" ? contextualConciergeHref : undefined
+            }
             className={clsx(
               "app-nav__item relative",
               isMap && "app-nav__item--map",
-              isConcierge && "app-nav__item--concierge",
               active && "is-active",
             )}
           >
