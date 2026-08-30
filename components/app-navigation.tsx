@@ -328,6 +328,7 @@ export function AppNavigation() {
             className={clsx(
               "app-nav__item relative",
               base === "/create" && "app-nav__item--create",
+              base === "/discover" && matchesRoute(pathname, ["/map"]) && "app-nav__item--map",
               active && "is-active",
             )}
           >
