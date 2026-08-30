@@ -122,7 +122,12 @@ export class SocialClient {
   }
 
   async startDirect(targetUserId: string) {
-    return this.request<{ conversationId: string; participantId: string; assistantParticipantId: string }>(
+    return this.request<{
+      conversationId: string;
+      participantId: string;
+      peer: PublicSocialProfile;
+      aiAccess: "off" | "mention" | "active";
+    }>(
       "/api/social/conversations/direct",
       { method: "POST", body: JSON.stringify({ targetUserId }) },
     );
