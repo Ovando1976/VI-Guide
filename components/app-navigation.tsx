@@ -49,7 +49,14 @@ const ITEMS = [
 // allowed to displace the canonical five-item Social AI navigation.
 export const LEGACY_TRAVEL_DESTINATIONS = [
   { base: "/trips", label: "My Trip" },
+  { base: "/planner", label: "Planner" },
+  { base: "/plan", label: "Plan" },
+  { base: "/today", label: "My Day" },
+  { base: "/trip-planning", label: "Trip Planning" },
+  { base: "/book", label: "Book" },
   { base: "/bookings", label: "Bookings" },
+  { base: "/checkout", label: "Checkout" },
+  { base: "/shared-trip", label: "Shared Trip" },
   { base: "/map", label: "Live Map" },
   { base: "/concierge", label: "Concierge" },
 ] as const;
