@@ -25,6 +25,7 @@ export async function GET(request: NextRequest, { params }: RouteContext) {
           actorType: participant.actorType,
           role: participant.role,
           isSelf: participant.id === self.id,
+          canWrite: participant.canWrite,
           canInvokeAi: participant.canInvokeAi,
           profile: profile ? publicSocialProfile(profile) : null,
           label: participant.actorType === "ai" ? "Island AI" : participant.actorType === "system" ? "System" : profile?.displayName ?? "Island member",
