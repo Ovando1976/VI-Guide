@@ -164,6 +164,9 @@ export function AppNavigation() {
   const pathname = usePathname();
   const [tripContext, setTripContext] = useState<TravelerNavTripContext | null>(null);
   const [activeIsland, setActiveIsland] = useState<ActiveIsland>("stt");
+  const contextualTripsHref = tripContext
+    ? `/trips?trip=${encodeURIComponent(tripContext.planId)}`
+    : "/trips";
   const contextualConciergeHref = tripContext
     ? `/concierge?island=${tripContext.island}&trip=${encodeURIComponent(tripContext.planId)}`
     : `/concierge?island=${activeIsland}`;
@@ -283,6 +286,7 @@ export function AppNavigation() {
         pathname === "/social" && "app-nav--home",
         pathname === "/" && "app-nav--home",
       )}
+      data-trip-href={contextualTripsHref}
       data-concierge-href={contextualConciergeHref}
       data-map-href={contextualMapHref}
       data-places-href={contextualPlacesHref}
