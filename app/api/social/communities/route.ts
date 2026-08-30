@@ -28,7 +28,14 @@ export async function POST(request: NextRequest) {
     await ensureSocialProfile(identity);
     await enforceSocialRateLimit(identity.uid, "create_community", { max: 5, windowSeconds: 86400 });
     const body = await readJsonObject(request);
-    return socialJson({ community: await createSocialCommunity(identity.uid, body) }, { status: 201 });
+    const community = await createSocialCommunity(identity.uid, {
+      name: body.name,
+      description: body.description,
+      island: body.island,
+      category: body.category,
+      visibility: body.visibility,
+    });
+    return socialJson({ community }, { status: 201 });
   } catch (error) {
     return socialErrorResponse(error);
   }
