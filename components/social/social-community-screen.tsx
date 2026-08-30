@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { Loader2, MessageCircle, Send, ShieldCheck, Sparkles, Users } from "lucide-react";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useCallback, useEffect, useState } from "react";
 
 import { SocialPostCard } from "@/components/social/social-post-card";
 import { useSocialClient } from "@/components/social/use-social-client";
@@ -19,7 +19,7 @@ export function SocialCommunityScreen({ communityId }: { communityId: string }) 
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  async function load() {
+  const load = useCallback(async () => {
     const headers: Record<string, string> = {};
     if (user) headers.Authorization = `Bearer ${await user.getIdToken()}`;
     const response = await fetch(`/api/social/communities/${encodeURIComponent(communityId)}`, { headers, cache: "no-store" });
@@ -31,7 +31,7 @@ export function SocialCommunityScreen({ communityId }: { communityId: string }) 
     setCommunity(data.community);
     setMembership(data.membership);
     setPosts(data.posts);
-  }
+  }, [communityId, user]);
 
   useEffect(() => {
     let cancelled = false;
@@ -39,7 +39,7 @@ export function SocialCommunityScreen({ communityId }: { communityId: string }) 
     void load().catch((cause) => !cancelled && setError(cause instanceof Error ? cause.message : "Community could not load."))
       .finally(() => !cancelled && setLoading(false));
     return () => { cancelled = true; };
-  }, [communityId, user]);
+  }, [load]);
 
   async function toggleMembership() {
     if (!user) { router.push(`/login?next=${encodeURIComponent(`/communities/${communityId}`)}`); return; }

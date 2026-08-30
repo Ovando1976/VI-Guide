@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Loader2, Send } from "lucide-react";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useCallback, useEffect, useState } from "react";
 
 import { SocialAvatar } from "@/components/social/social-avatar";
 import { SocialPostCard } from "@/components/social/social-post-card";
@@ -19,7 +19,7 @@ export function SocialPostDetailScreen({ postId }: { postId: string }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  async function load() {
+  const load = useCallback(async () => {
     const [nextPost, nextComments] = await Promise.all([client.post(postId), client.comments(postId)]);
     setPost(nextPost);
     setComments(nextComments);
@@ -31,7 +31,7 @@ export function SocialPostDetailScreen({ postId }: { postId: string }) {
       return [id, data.profile] as const;
     }));
     setAuthors(Object.fromEntries(pairs.filter(Boolean) as Array<readonly [string, PublicSocialProfile]>));
-  }
+  }, [client, postId]);
 
   useEffect(() => {
     let cancelled = false;
@@ -39,7 +39,7 @@ export function SocialPostDetailScreen({ postId }: { postId: string }) {
     void load().catch((cause) => !cancelled && setError(cause instanceof Error ? cause.message : "Post could not load."))
       .finally(() => !cancelled && setLoading(false));
     return () => { cancelled = true; };
-  }, [postId]);
+  }, [load]);
 
   async function submit(event: FormEvent) {
     event.preventDefault();
