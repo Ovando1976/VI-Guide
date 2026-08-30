@@ -11,7 +11,7 @@ import {
   ConversationPolicyError,
   assertCanWrite,
 } from "@/lib/conversations/conversation-policy";
-import { syncConversationInboxAfterMessage } from "@/lib/social/conversation-service";
+import { recordSocialMessageForInbox } from "@/lib/social/conversation-service";
 import { createSocialNotification } from "@/lib/social/notification-service";
 import { getSocialProfile } from "@/lib/social/profile-service";
 import { enforceSocialRateLimit } from "@/lib/social/rate-limit";
@@ -162,7 +162,7 @@ export async function POST(
       ...(mentions?.length ? { mentions } : {}),
     });
 
-    await syncConversationInboxAfterMessage(conversationId, message);
+    await recordSocialMessageForInbox(conversationId, message);
 
     const [participants, senderProfile] = await Promise.all([
       store.listParticipants(conversationId),
