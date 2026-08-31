@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "id": "usvi-olg-parcels",
+      "authority": "Office of the Lieutenant Governor of the U.S. Virgin Islands, Geospatial Information Systems Division",
+      "kind": "parcel-and-zoning",
+      "serviceItemId": "fe8753dec2c14a39adec5e6df2353cac",
+      "layerId": 0,
+      "serviceUrl": "https://services3.arcgis.com/UfiM23HwAqZRk1vw/ArcGIS/rest/services/Parcels_of_the_US_Virgin_Islands/FeatureServer/0",
+      "spatialReference": 32161,
+      "targetSpatialReference": 4326,
+      "maxRecordCount": 2000,
+      "fields": {
+        "parcelId": "PARCEL_NO",
+        "zoning": "DPNR_ZONE",
+        "cadastralMap": "MAP",
+        "parcelName": "PARCEL_NAME",
+        "acreage": "ACRE",
+        "globalId": "GlobalID",
+        "objectId": "OBJECTID"
+      },
+      "observedDataLastEdit": "2026-08-28T13:26:37-04:00",
+      "supportsGeoJSON": true,
+      "notes": "Authorized USVI Cadastre & Tax Assessor parcel data. Preserve source-native parcel identifiers and zoning values; do not infer missing values."
+    }
+  ]
+}
