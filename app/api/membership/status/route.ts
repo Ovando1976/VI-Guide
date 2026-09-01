@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
+import type Stripe from "stripe";
 
+import { VI_EVENT_SCHEMA_VERSION } from "@/lib/analytics/vi-event";
 import { authErrorResponse, requireSession } from "@/lib/auth-server";
 import {
   getAdminDb,
@@ -25,9 +27,8 @@ export async function GET() {
       );
     }
 
-    const membershipRef = getAdminDb()
-      .collection("travelerMemberships")
-      .doc(session.uid);
+    const db = getAdminDb();
+    const membershipRef = db.collection("travelerMemberships").doc(session.uid);
     const snapshot = await membershipRef.get();
     const membership = snapshot.data() ?? {};
     const customerId = clean(membership.stripeCustomerId, 220);
@@ -43,7 +44,8 @@ export async function GET() {
       });
     }
 
-    const subscriptions = await getStripe().subscriptions.list({
+    const stripe = getStripe();
+    const subscriptions = await stripe.subscriptions.list({
       customer: customerId,
       status: "all",
       limit: 20,
@@ -82,6 +84,15 @@ export async function GET() {
       { merge: true },
     );
 
+    if (matching.status === "active") {
+      await recordLatestVerifiedPayment({
+        stripe,
+        db,
+        userId: session.uid,
+        subscription: matching,
+      });
+    }
+
     return NextResponse.json({
       membership: {
         plan: TRAVELER_PLUS_PLAN,
@@ -99,6 +110,66 @@ export async function GET() {
       { status: 500 },
     );
   }
+}
+
+async function recordLatestVerifiedPayment({
+  stripe,
+  db,
+  userId,
+  subscription,
+}: {
+  stripe: Stripe;
+  db: ReturnType<typeof getAdminDb>;
+  userId: string;
+  subscription: Stripe.Subscription;
+}) {
+  const invoiceId = expandableId(subscription.latest_invoice);
+  if (!invoiceId) return;
+
+  try {
+    const invoice = await stripe.invoices.retrieve(invoiceId);
+    if (invoice.status !== "paid" || invoice.amount_paid <= 0) return;
+
+    const eventId = `membership_payment_completed_${invoice.id}`;
+    const occurredAt = new Date((invoice.status_transitions.paid_at ?? invoice.created) * 1000).toISOString();
+    await db.collection("viEvents").doc(eventId).set(
+      {
+        eventId,
+        eventName: "payment_completed",
+        schemaVersion: VI_EVENT_SCHEMA_VERSION,
+        origin: "server",
+        occurredAt,
+        receivedAt: new Date().toISOString(),
+        sessionId: `membership_${userId}`,
+        userId,
+        island: null,
+        travelerType: null,
+        source: "stripe_subscription_verification",
+        itineraryId: null,
+        listingId: "traveler-plus",
+        providerId: "usvi-explorer",
+        bookingId: `membership:${userId}`,
+        stripeEventId: null,
+        idempotencyKey: invoice.id,
+        payload: {
+          offer_id: TRAVELER_PLUS_PLAN,
+          offer_type: "subscription",
+          amount_cents: invoice.amount_paid,
+          currency: invoice.currency,
+          stripe_invoice_id: invoice.id,
+          stripe_subscription_id: subscription.id,
+        },
+      },
+      { merge: false },
+    );
+  } catch (error) {
+    console.error("traveler plus payment analytics error", error);
+  }
+}
+
+function expandableId(value: string | { id: string } | null | undefined) {
+  if (typeof value === "string") return value.trim();
+  return value?.id?.trim() ?? "";
 }
 
 function clean(value: unknown, maxLength: number) {
