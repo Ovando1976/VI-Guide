@@ -146,6 +146,12 @@ async function main() {
 
   const seenObjectIds = new Set<string>();
   const seenGlobalIds = new Set<string>();
+  const invalidGeometryRecords: Array<{
+    objectId: string;
+    parcelId: string;
+    globalId: string;
+    geometryType: string | null;
+  }> = [];
   for (const feature of features) {
     const objectId = String(feature.properties?.OBJECTID ?? "").trim();
     const globalId = String(feature.properties?.GlobalID ?? "").trim().toLowerCase();
@@ -159,8 +165,21 @@ async function main() {
     seenGlobalIds.add(globalId);
 
     if (!hasValidParcelGeometry(feature.geometry)) {
-      throw new Error(`Parcel feature ${objectId} has missing or invalid polygon geometry.`);
+      invalidGeometryRecords.push({
+        objectId,
+        parcelId: String(feature.properties?.PARCEL_NO ?? "").trim(),
+        globalId,
+        geometryType: feature.geometry?.type ?? null,
+      });
     }
+  }
+
+  if (invalidGeometryRecords.length) {
+    throw new Error(
+      `Parcel geometry audit failed for ${invalidGeometryRecords.length} record(s): ${JSON.stringify(
+        invalidGeometryRecords.slice(0, 50),
+      )}`,
+    );
   }
 
   const liveLastEdit = Number(liveMetadata.editingInfo?.lastEditDate);
