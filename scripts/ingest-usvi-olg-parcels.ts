@@ -40,6 +40,7 @@ const OUTPUT_DIR = path.resolve("data/source/property-intelligence");
 const OUTPUT_PATH = path.join(OUTPUT_DIR, "usvi-olg-parcels.geojson");
 const META_PATH = path.join(OUTPUT_DIR, "usvi-olg-parcels.meta.json");
 const REQUEST_TIMEOUT_MS = 30_000;
+const VALIDATE_ONLY = process.env.PROPERTY_INGEST_VALIDATE_ONLY === "1";
 
 async function fetchJson<T>(url: string, accept = "application/json"): Promise<T> {
   const controller = new AbortController();
@@ -183,6 +184,13 @@ async function main() {
     fields: ["DPNR_ZONE", "PARCEL_NO", "MAP", "PARCEL_NAME", "ACRE", "GlobalID", "OBJECTID"],
     provenancePolicy: "source-native-values-only",
   };
+
+  console.log("USVI OLG parcel validation:", JSON.stringify(metadata));
+
+  if (VALIDATE_ONLY) {
+    console.log("Validation-only mode complete; no snapshot files were written.");
+    return;
+  }
 
   await mkdir(OUTPUT_DIR, { recursive: true });
   await Promise.all([
