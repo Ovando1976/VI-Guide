@@ -148,32 +148,36 @@ export async function POST(request: NextRequest) {
       { merge: true },
     );
 
-    const eventId = `membership_checkout_started_${checkout.id}`;
-    await db.collection("viEvents").doc(eventId).set({
-      eventId,
-      eventName: "checkout_started",
-      schemaVersion: VI_EVENT_SCHEMA_VERSION,
-      origin: "server",
-      occurredAt: now,
-      receivedAt: now,
-      sessionId: `membership_${session.uid}`,
-      userId: session.uid,
-      island: null,
-      travelerType: null,
-      source: "traveler_plus_checkout",
-      itineraryId: null,
-      listingId: null,
-      providerId: "usvi-explorer",
-      bookingId: null,
-      payload: {
-        offer_id: TRAVELER_PLUS_PLAN,
-        offer_type: "subscription",
-        price_id: TRAVELER_PLUS_PRICE_ID,
-        price_cents: 9900,
-        billing_period: "annual",
-        checkout_session_id: checkout.id,
-      },
-    });
+    try {
+      const eventId = `membership_checkout_started_${checkout.id}`;
+      await db.collection("viEvents").doc(eventId).set({
+        eventId,
+        eventName: "checkout_started",
+        schemaVersion: VI_EVENT_SCHEMA_VERSION,
+        origin: "server",
+        occurredAt: now,
+        receivedAt: now,
+        sessionId: `membership_${session.uid}`,
+        userId: session.uid,
+        island: null,
+        travelerType: null,
+        source: "traveler_plus_checkout",
+        itineraryId: null,
+        listingId: null,
+        providerId: "usvi-explorer",
+        bookingId: null,
+        payload: {
+          offer_id: TRAVELER_PLUS_PLAN,
+          offer_type: "subscription",
+          price_id: TRAVELER_PLUS_PRICE_ID,
+          price_cents: 9900,
+          billing_period: "annual",
+          checkout_session_id: checkout.id,
+        },
+      });
+    } catch (error) {
+      console.error("traveler plus checkout analytics error", error);
+    }
 
     return NextResponse.json({ checkoutUrl: checkout.url });
   } catch (error) {
