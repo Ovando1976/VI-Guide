@@ -39,6 +39,7 @@ const REGISTRY_PATH = path.resolve("data-products/usvi-property-intelligence/sou
 const OUTPUT_DIR = path.resolve("data/source/property-intelligence");
 const OUTPUT_PATH = path.join(OUTPUT_DIR, "usvi-olg-parcels.geojson");
 const META_PATH = path.join(OUTPUT_DIR, "usvi-olg-parcels.meta.json");
+const QUARANTINE_PATH = path.join(OUTPUT_DIR, "usvi-olg-parcels.quarantine.json");
 const REQUEST_TIMEOUT_MS = 30_000;
 const VALIDATE_ONLY = process.env.PROPERTY_INGEST_VALIDATE_ONLY === "1";
 
@@ -174,10 +175,14 @@ async function main() {
     }
   }
 
+  const validFeatures = features.filter((feature) => hasValidParcelGeometry(feature.geometry));
+  if (!validFeatures.length) {
+    throw new Error("Parcel geometry audit produced no usable polygon features.");
+  }
   if (invalidGeometryRecords.length) {
-    throw new Error(
-      `Parcel geometry audit failed for ${invalidGeometryRecords.length} record(s): ${JSON.stringify(
-        invalidGeometryRecords.slice(0, 50),
+    console.warn(
+      `Quarantining ${invalidGeometryRecords.length} source record(s) with missing or invalid polygon geometry: ${JSON.stringify(
+        invalidGeometryRecords,
       )}`,
     );
   }
@@ -187,7 +192,7 @@ async function main() {
     ? new Date(liveLastEdit).toISOString()
     : source.observedDataLastEdit ?? null;
 
-  const collection: GeoJsonFeatureCollection = { type: "FeatureCollection", features };
+  const collection: GeoJsonFeatureCollection = { type: "FeatureCollection", features: validFeatures };
   const metadata = {
     schemaVersion: 1,
     sourceId: source.id,
@@ -195,11 +200,15 @@ async function main() {
     sourceDataLastEdit,
     ingestedAt: new Date().toISOString(),
     targetSpatialReference: source.targetSpatialReference || 4326,
-    expectedRecordCount,
-    recordCount: features.length,
+    sourceRecordCount: expectedRecordCount,
+    recordCount: validFeatures.length,
+    quarantinedRecordCount: invalidGeometryRecords.length,
+    quarantinedObjectIds: invalidGeometryRecords.map((record) => record.objectId),
     uniqueObjectIdCount: seenObjectIds.size,
     uniqueGlobalIdCount: seenGlobalIds.size,
-    geometryValidation: "all-features-polygon-or-multipolygon",
+    geometryValidation: invalidGeometryRecords.length
+      ? "invalid-geometries-quarantined"
+      : "all-features-polygon-or-multipolygon",
     fields: ["DPNR_ZONE", "PARCEL_NO", "MAP", "PARCEL_NAME", "ACRE", "GlobalID", "OBJECTID"],
     provenancePolicy: "source-native-values-only",
   };
@@ -215,9 +224,23 @@ async function main() {
   await Promise.all([
     writeFile(OUTPUT_PATH, JSON.stringify(collection) + "\n", "utf8"),
     writeFile(META_PATH, JSON.stringify(metadata, null, 2) + "\n", "utf8"),
+    writeFile(
+      QUARANTINE_PATH,
+      JSON.stringify(
+        {
+          schemaVersion: 1,
+          sourceId: source.id,
+          reason: "missing-or-invalid-polygon-geometry",
+          records: invalidGeometryRecords,
+        },
+        null,
+        2,
+      ) + "\n",
+      "utf8",
+    ),
   ]);
 
-  console.log(`USVI OLG parcel ingestion complete: ${features.length} records.`);
+  console.log(`USVI OLG parcel ingestion complete: ${validFeatures.length} usable records; ${invalidGeometryRecords.length} quarantined.`);
   console.log(`Wrote ${path.relative(process.cwd(), OUTPUT_PATH)}.`);
 }
 
