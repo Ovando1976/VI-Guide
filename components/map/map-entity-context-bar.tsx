@@ -36,7 +36,6 @@ export function MapEntityContextBar() {
   const lng = finiteCoordinate(searchParams.get("placeLng"), -180, 180);
   const estateGeoid = bounded(searchParams.get("estate"), 180);
   const summary = bounded(searchParams.get("placeDescription"), 1000) || `${name} on ${islandLabel(island)}.`;
-  // buildMobilityRideHref owns the canonical Mobility URL, including the #book anchor.
   const rideHref = buildMobilityRideHref({
     name,
     island,
@@ -98,7 +97,7 @@ export function MapEntityContextBar() {
                 Explore <ArrowRight className="h-4 w-4" />
               </Link>
             ) : (
-              <Link href="/planner" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-3 text-[9px] font-black uppercase tracking-[.1em] text-[#043331]">
+              <Link href="/trips" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-3 text-[9px] font-black uppercase tracking-[.1em] text-[#043331]">
                 <Route className="h-4 w-4 text-teal-700" /> My Trip
               </Link>
             )}
@@ -121,7 +120,7 @@ export function MapEntityContextBar() {
               compact
               className="min-h-9 px-3"
             />
-            <Link href="/planner" className="inline-flex min-h-9 items-center gap-2 rounded-full px-3 text-[8px] font-black uppercase tracking-[.12em] text-teal-800">
+            <Link href="/trips" className="inline-flex min-h-9 items-center gap-2 rounded-full px-3 text-[8px] font-black uppercase tracking-[.12em] text-teal-800">
               <Route className="h-3.5 w-3.5" /> Open My Trip
             </Link>
           </div>
