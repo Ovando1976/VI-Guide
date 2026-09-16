@@ -87,9 +87,9 @@ export function runConciergeTool(
           availableMinutes: minutes,
           protectedBufferMinutes: 120,
           usableMinutes: usable,
-          recommendation: usable < 120 ? "Keep the plan to one primary stop." : usable < 240 ? "Use one primary stop plus one nearby food or short-interest stop." : "A two-to-three-stop plan may fit if locations are geographically coherent.",
+          recommendation: usable <= 0 ? "No usable planning window was established. Ask for or derive a time window before constructing a schedule." : usable < 120 ? "Keep the plan to one primary stop." : usable < 240 ? "Use one primary stop plus one nearby food or short-interest stop." : "A two-to-three-stop plan may fit if locations are geographically coherent.",
         },
-        warnings: minutes > 0 && minutes < 180 ? ["Short window: avoid cross-island transfers and overpacking the itinerary."] : [],
+        warnings: minutes === 0 ? ["No time budget was supplied; do not construct a timed itinerary."] : minutes < 180 ? ["Short window: avoid cross-island transfers and overpacking the itinerary."] : [],
       };
     }
     case "build_day_plan": {
@@ -98,6 +98,20 @@ export function runConciergeTool(
       const places = search("places", input.query ?? "", context);
       const beaches = search("beaches", input.query ?? "beach", context);
       const history = search("historic", input.query ?? "history", context);
+      if (minutes === 0 || usable === 0) {
+        return {
+          tool,
+          ok: true,
+          evidence: {
+            availableMinutes: minutes,
+            protectedBufferMinutes: 120,
+            usableMinutes: usable,
+            candidates: [],
+            sequencingRule: "Do not construct a timed itinerary until a real time window is known. Gather interests and evidence first.",
+          },
+          warnings: ["No usable time window was supplied; this result is discovery evidence only, not an itinerary draft."],
+        };
+      }
       const candidates = [...beaches.slice(0, 2), ...places.slice(0, 2), ...history.slice(0, 2)];
       return {
         tool,
