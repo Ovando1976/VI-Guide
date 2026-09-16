@@ -59,6 +59,29 @@ export default function IslandWorkspacePage() {
         ))}
       </nav>
 
+      <div className="sticky top-[52px] z-[65] border-b border-white/7 bg-[#03141b]/92 px-3 py-2 backdrop-blur-2xl lg:hidden">
+        <div className="mx-auto flex max-w-[1780px] gap-2 overflow-x-auto">
+          <Link
+            href="/explore"
+            className="inline-flex min-h-9 shrink-0 items-center gap-1.5 rounded-xl border border-cyan-200/15 bg-cyan-200/[.07] px-3 text-[9px] font-black text-cyan-100"
+          >
+            Discover
+          </Link>
+          <Link
+            href="/mobility"
+            className="inline-flex min-h-9 shrink-0 items-center gap-1.5 rounded-xl border border-amber-200/15 bg-amber-200/[.06] px-3 text-[9px] font-black text-amber-100"
+          >
+            Move
+          </Link>
+          <Link
+            href="/trips"
+            className="inline-flex min-h-9 shrink-0 items-center gap-1.5 rounded-xl border border-white/10 bg-white/[.035] px-3 text-[9px] font-black text-white/60"
+          >
+            My Trip
+          </Link>
+        </div>
+      </div>
+
       <UnifiedWorkspaceProvider>
         <IslandGenerativeWorkspace />
       </UnifiedWorkspaceProvider>
@@ -72,7 +95,7 @@ export default function IslandWorkspacePage() {
 
         @media (max-width: 1023px) {
           .island-workspace-page main header {
-            top: 52px !important;
+            top: 100px !important;
           }
         }
 
