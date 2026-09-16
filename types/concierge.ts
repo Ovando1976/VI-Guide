@@ -13,6 +13,21 @@ export type ConciergeEstateContext = {
   name: string;
 };
 
+export type ConciergeTravelerProfile = {
+  partySize?: number;
+  children?: number;
+  seniors?: number;
+  accessibilityNeeds?: string[];
+  budget?: "value" | "moderate" | "premium" | "luxury";
+  interests?: string[];
+  pace?: "relaxed" | "balanced" | "active";
+  dislikes?: string[];
+  lodgingName?: string | null;
+  cruiseShip?: string | null;
+  arrivalTime?: string | null;
+  departureTime?: string | null;
+};
+
 export type ConciergeContext = {
   island: IslandCode;
   islandName: string;
@@ -24,6 +39,7 @@ export type ConciergeContext = {
   luggage: number;
   activeLens: string;
   nearbyEstates: ConciergeEstateContext[];
+  traveler?: ConciergeTravelerProfile;
 };
 
 export type ConciergeActionType =
@@ -32,7 +48,8 @@ export type ConciergeActionType =
   | "set_destination"
   | "open_estate"
   | "open_mobility"
-  | "open_heritage";
+  | "open_heritage"
+  | "open_itinerary";
 
 export type ConciergeAction = {
   id: string;
