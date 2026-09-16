@@ -47,7 +47,7 @@ export function buildJourneyMobilityHref(journey: JourneyMobilityInput) {
     island: journey.island,
     trip: journey.id,
     source: "concierge",
-    returnTo: "/trips",
+    returnTo: `/trips?trip=${encodeURIComponent(journey.id)}`,
   });
   const first = journey.plan[0];
   const last = journey.plan[journey.plan.length - 1];
