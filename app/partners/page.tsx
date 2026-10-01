@@ -90,6 +90,26 @@ export default function PartnersPage() {
         </div>
       </section>
 
+      <section className="mx-auto -mt-4 max-w-7xl px-4 pb-2 sm:px-7 lg:px-10">
+        <Link
+          href="/partners/founding"
+          className="group grid gap-4 rounded-[30px] border border-[#d8c36b] bg-[#fff7df] p-6 shadow-[0_18px_50px_rgba(3,47,45,.12)] transition hover:-translate-y-0.5 sm:grid-cols-[1fr_auto] sm:items-center sm:p-8"
+        >
+          <span>
+            <span className="text-[9px] font-black uppercase tracking-[.18em] text-[#9a6a1f]">Founding 50 · St. Thomas</span>
+            <span className="vi-display mt-2 block text-3xl font-bold leading-[.94] text-[#032f2d] sm:text-4xl">
+              Put your business inside the traveler journey.
+            </span>
+            <span className="mt-3 block max-w-3xl text-sm font-semibold leading-6 text-[#725c34]">
+              Join the first 50 businesses for a 30-day pilot. We build the profile, measure engagement, and let the results determine whether the $149/month Founding Partner program makes sense.
+            </span>
+          </span>
+          <span className="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-[#032f2d] px-6 text-[9px] font-black uppercase tracking-[.15em] text-white transition group-hover:bg-[#0b6b64]">
+            See the Founding offer <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+          </span>
+        </Link>
+      </section>
+
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-7 lg:px-10 lg:py-14">
         <div className="grid gap-6 lg:grid-cols-3">
           <PartnerAction
